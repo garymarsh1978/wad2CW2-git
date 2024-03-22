@@ -1,0 +1,23 @@
+{
+  "name": "wad2cw2-git",
+  "version": "1.0.0",
+  "description": "WAD2 Coursework2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garymarsh1978/wad2CW2-git.git"
+  },
+  "author": "Gary Marsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garymarsh1978/wad2CW2-git/issues"
+  },
+  "homepage": "https://github.com/garymarsh1978/wad2CW2-git#readme",
+  "dependencies": {
+    "express": "^4.19.1",
+    "path": "^0.12.7"
+  }
+}
