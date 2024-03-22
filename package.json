@@ -18,6 +18,7 @@
   "homepage": "https://github.com/garymarsh1978/wad2CW2-git#readme",
   "dependencies": {
     "express": "^4.19.1",
+    "gray-nedb": "^1.8.3",
     "path": "^0.12.7"
   }
 }
