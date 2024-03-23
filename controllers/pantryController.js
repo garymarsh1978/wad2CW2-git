@@ -8,8 +8,19 @@ exports.entries_list = function(req, res) {
     db.getAllEntries();
 }
 exports.landing_page = function(req, res) {
-    res.send('<h1>Welcome to the Pantry application.</h1>');
+        db.getAllEntries()
+        .then((list) => {
+            res.render('foodEntries', {
+            'title': 'Welcome to Scottish Food Pantry Network',
+            'foodEntries': list
+        });
+console.log('promise resolved');
+})
+.catch((err) => {
+console.log('promise rejected', err);
+})
 }
+      
 exports.new_food_entry = function(req, res) {
     res.send('<h1>Not yet implemented: show a new  food entry page.</h1>');
 }

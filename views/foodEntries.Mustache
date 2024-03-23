@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Mustache Example</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    {{#foodEntries}}
+<div>
+    <div>
+    <h4> {{foodType}} </h4>
+<p>
+{{quantity}}
+</p>
+<p>
+{{harvestDate}}
+</p>
+
+<div>
+<p>Donated by {{donator}} ,  deposited on {{depositDate}}</p>
+</div>
+{{/foodEntries}}
+</div>
+{{^entries}}
+No Food Donations Available yet.
+{{/entries}}
+</body>
+</html>
