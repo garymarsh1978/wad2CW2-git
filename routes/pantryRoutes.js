@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/pantryController.js');
-router.get("/", controller.landing_page);
+router.get('/', controller.landing_page);
 router.get('/pantry', controller.entries_list);
-router.get('/newfood', controller.new_food_entry);
+router.get('/newfood', controller.new_food_entries);
+router.post('/newfood', controller.post_new_food_entry);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/about', function(req, res) {
     res.redirect('/about.html');

@@ -5,9 +5,9 @@
 <body>
     <h1>{{title}}</h1>
     {{#foodEntries}}
-<div>
-    <div>
+<div>    
     <h4> {{foodType}} </h4>
+</div>8    
 <p>
 {{quantity}}
 </p>
@@ -19,9 +19,8 @@
 <p>Donated by {{donator}} ,  deposited on {{depositDate}}</p>
 </div>
 {{/foodEntries}}
-</div>
-{{^entries}}
+{{^foodEntries}}
 No Food Donations Available yet.
-{{/entries}}
+{{/foodEntries}}
 </body>
 </html>

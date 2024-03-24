@@ -1,13 +1,14 @@
 const nedb = require('gray-nedb');
+
 class Pantry {
     constructor(dbFilePath) {
         if (dbFilePath) {
-            this.db = new nedb({ filename: dbFilePath, autoload: true });
-            console.log('DB connected to ' + dbFilePath);
+        this.db = new nedb({ filename: dbFilePath, autoload: true });
+        console.log('DB connected to ' + dbFilePath);
         } else {
-            this.db = new nedb();
+        this.db = new nedb();
         }
-    }
+        }
     init() {
         this.db.insert({
             donator:'Peter Smith',
@@ -34,38 +35,57 @@ class Pantry {
         return new Promise((resolve, reject) => {
             //use the find() function of the database to get the data,
             //error first callback function, err for error, entries for data
-            this.db.find({}, function(err, entries) {
+            this.db.find({}, function(err, foodEntries) {
                 //if error occurs reject Promise
                 if (err) {
                     reject(err);
                 //if no error resolve the promise & return the data
                 } else {
-                    resolve(entries);
+                    resolve(foodEntries);
                     //to see what the returned data looks like
-                    console.log('function all() returns: ', entries);
+                    console.log('function all() returns: ', foodEntries);
                 }
             })
         })
     }
-
+    addFoodEntry(donator, foodType, quantity, harvestDate) {
+        var foodEntry = {
+        donator: donator,
+        foodType: foodType,
+        quantity: quantity,
+        harvestDate: harvestDate,
+        depositDate: null
+        }      
+console.log('entry created', foodEntry);
+this.db.insert(foodEntry, function(err, doc) {
+if (err) {
+console.log('Error inserting document', donator);
+} else {
+console.log('document inserted into the database', doc);
+}
+}) 
+}
     getCarrotsEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
             //find(foodType:'Carrots) retrieves the data,
             //with error first callback function, err=error, entries=data
-            this.db.find({ foodType: 'Carrots' }, function(err, entries) {
+            this.db.find({ foodType: 'Carrots' }, function(err, foodEntries) {
                 //if error occurs reject Promise
                 if (err) {
                     reject(err);
                 //if no error resolve the promise and return the data
                 } else {
-                    resolve(entries);
+                    resolve(foodEntries);
                     //to see what the returned data looks like
-                    console.log('getCarrotsEntries() returns: ', entries);
+                    console.log('getCarrotsEntries() returns: ', foodEntries);
                  }
             })
         })
     }
+
+         
 }
+
 //make the module visible outside
 module.exports = Pantry; 

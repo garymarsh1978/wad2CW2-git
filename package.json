@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/garymarsh1978/wad2CW2-git#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "express": "^4.19.1",
     "gray-nedb": "^1.8.3",
     "mustache-express": "^1.3.2",

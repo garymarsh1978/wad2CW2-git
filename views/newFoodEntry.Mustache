@@ -1,0 +1,39 @@
+<html>
+<head>
+{{>header}}
+</head>
+<body class="container">
+<h2>Write a new entry</h2>
+    <form method="post" role="form">
+        <div class="form-group">
+            <label for="Donator">Donator</label>
+            <input type="text" class="form-control" id="donator" name="donator"
+            placeholder="Donated by" required>
+        </div>
+        <div class="form-group">
+            <label for="foodType">FoodType</label>
+            <input type="text" class="form-control" id="foodType" name="foodType"
+placeholder="Enter Type of Food" required>
+</div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="text" class="form-control" id="quantity" name="quantity"
+            placeholder="Quantity of food" required>
+        </div>
+        <div class="form-group">
+            <label for="harvestDate">HarvestDate</label>
+            <textarea class="form-control" id="harvestDate" name="harvestDate"
+            placeholder="Enter Harvest Date" required>
+        </textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Post entry" class="btn btn-primary">
+        </div>
+<div class="text-right">
+<a href="/newfood" class="btn btn-primary">
+Donate food item
+</a>
+</div>
+    </form>
+</body>
+</html>
