@@ -1,16 +1,17 @@
 const nedb = require('gray-nedb');
 
-class Pantry {
+class Pantry{
     constructor(dbFilePath) {
         if (dbFilePath) {
-        this.db = new nedb({ filename: dbFilePath, autoload: true });
-        console.log('DB connected to ' + dbFilePath);
+          this.db = new nedb({ filename: dbFilePath.filename, autoload: true });
+          //console.log( "Here" + dbFilePath.filename);
         } else {
-        this.db = new nedb();
+          this.db = new nedb();
         }
-        }
+      } 
+    
     init() {
-        this.db.insert({
+       /* this.db.insert({
             donator:'Peter Smith',
             foodType: 'Carrots',
             quantity: '2 kg',
@@ -27,8 +28,8 @@ class Pantry {
                 depositDate: '2024-03-16'
         });
         //for later debugging
-        console.log('db entry Ann inserted');
-        }
+        console.log('db entry Ann inserted'); */
+        } 
     //a function to return all entries from the database
     getAllEntries() {
         //return a Promise object, which can be resolved or rejected

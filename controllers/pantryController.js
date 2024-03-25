@@ -1,6 +1,7 @@
 const pantryDAO = require('../models/pantryModel.js');
-const db = new pantryDAO();
 
+const db = new pantryDAO({ filename: 'pantry.db', autoload: true }); 
+// to set database up in virtual memory use const db = new guestbookDAO();
 db.init();
 
 exports.entries_list = function(req, res) {
