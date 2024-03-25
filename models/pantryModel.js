@@ -14,8 +14,8 @@ class Pantry {
             donator:'Peter Smith',
             foodType: 'Carrots',
             quantity: '2 kg',
-            harvestDate: '2023-03-16',
-            depositDate: '2023-03-17'
+            harvestDate: '2024-03-16',
+            depositDate: '2024-03-17'
         });
         //for later debugging
         console.log('db entry Peter inserted');
@@ -23,8 +23,8 @@ class Pantry {
                 donator:'Ann Budge',
                 foodType: 'Apples',
                 quantity: '3 kg',
-                harvestDate: '2023-03-15',
-                depositDate: '2023-03-16'
+                harvestDate: '2024-03-15',
+                depositDate: '2024-03-16'
         });
         //for later debugging
         console.log('db entry Ann inserted');
