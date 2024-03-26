@@ -38,6 +38,10 @@ exports.post_new_food_entry = function(req, res) {
         response.status(400).send("Entries must have a Food Type.");
         return;
         }
+    if (!req.body.harvestDate) {
+        response.status(400).send("Entries must have a Harvest Date.");
+        return;
+            }
     db.addFoodEntry(req.body.donator,  req.body.foodType, req.body.quantity, req.body.harvestDate);
     res.redirect('/');
     }
