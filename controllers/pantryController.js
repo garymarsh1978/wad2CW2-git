@@ -76,7 +76,7 @@ exports.post_contact_entry = function(req, res) {
                 response.status(400).send("Entries must have a message.");
                 return;
                 }
-        contactdb.addContactEntry(req.body.firstName,  req.body.lastName, req.body.email, req.body.interest, req.body.message);
+        contactdb.addContactEntry(req.body.firstName,  req.body.lastName, req.body.email, req.body.interest, req.body.message.trim());
         res.redirect('/');
         }
 exports.carrots_entries = function(req, res) {
