@@ -6,6 +6,8 @@ router.get('/pantry', controller.entries_list);
 router.get('/newfood', controller.new_food_entries);
 router.post('/newfood', controller.post_new_food_entry);
 router.get('/Carrots', controller.carrots_entries);
+router.get('/contact', controller.contact_page);
+router.post('/contact', controller.post_contact_entry);
 router.get('/about', function(req, res) {
     res.redirect('/about.html');
 })
