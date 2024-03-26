@@ -22,8 +22,9 @@ placeholder="Enter Type of Food" required>
         </div>
         <div class="form-group">
             <label for="harvestDate">HarvestDate</label>
-            <input type="text" id="harvestDate" name= "harvestDate" class="form-control" name="harvestDate" 
-            placeholder="Enter Harvest Date YYYY-MM-DD" required pattern="\d{4}-\d{2}-\d{2}">
+            <input type="date" id="harvestDate" name= "harvestDate" class="form-control" name="harvestDate" data-fv-date-format='YYYY-MM-DD' 
+            data-fv-date="true"
+            placeholder="Enter Harvest Date YYYY-MM-DD" >
         </div>
         <div class="form-group">
             <input type="submit" value="Add Food Item" class="btn btn-primary">
