@@ -30,6 +30,33 @@ console.log('promise resolved');
 console.log('promise rejected', err);
 })
 }
+exports.entries_list = function(req, res) {
+    db.getAllEntries()
+    .then((list) => {
+        res.render('foodEntries', {
+        'title': 'Welcome to Scottish Food Pantry Network',
+        'foodEntries': list
+    });
+console.log('promise resolved');
+})
+.catch((err) => {
+console.log('promise rejected', err);
+})
+}
+exports.show_food_type_entries = function(req, res) {
+    console.log('filtering by Food Type', req.params.foodType);
+    let food = req.params.foodType;
+    db.getEntriesByFoodType(food).then(
+    (foodEntries) => {
+    res.render('foodEntries', {
+    'title': 'Welcome to Scottish Food Pantry Network',
+    'foodEntries': foodEntries
+});
+}).catch((err) => {
+console.log('error handling Food Types', err);
+});
+}
+    
 exports.new_food_entries = function(req, res) {
     res.render('newFoodEntry', {
     'title': 'Welcome to Scottish Food Pantry Network',

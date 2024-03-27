@@ -8,6 +8,7 @@ router.post('/newfood', controller.post_new_food_entry);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
 router.post('/contact', controller.post_contact_entry);
+router.get('/pantry/:foodType', controller.show_food_type_entries);
 router.get('/about', function(req, res) {
     res.redirect('/about.html');
 })

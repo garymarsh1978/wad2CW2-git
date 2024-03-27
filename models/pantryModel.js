@@ -66,6 +66,18 @@ console.log('document inserted into the database', doc);
 }
 }) 
 }
+getEntriesByFoodType(food) {
+    return new Promise((resolve, reject) => {
+    this.db.find({ 'foodType': food }, function(err, foodEntries) {
+    if (err) {
+    reject(err);
+    } else {
+    resolve(foodEntries);
+    console.log('getEntriesByFoodType returns: ', foodEntries);
+    }
+    })
+    })
+    }
     getCarrotsEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
