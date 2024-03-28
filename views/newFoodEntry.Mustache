@@ -3,7 +3,20 @@
 {{>header}}
 </head>
 <body class="container">
-<h2>Write a new entry</h2>
+{{^user}}
+  <a id="login" href="/register" class="btn btn-primary">
+    Register
+  </a>
+  <a id="login" href="/login" class="btn btn-primary">
+    Sign in
+  </a>
+{{/user}}
+{{#user}}
+  <a id="logout" href="/logout" class="btn btn-primary">
+    Sign out
+  </a>
+{{/user}}
+<h2>{{title'}}</h2>
     <form method="post" role="form">
         <div class="form-group">
             <label for="Donator">Donator</label>

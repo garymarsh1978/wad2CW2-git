@@ -1,0 +1,17 @@
+{"user":"Peter","password":"$2b$10$5.YNO1fwGfMkobDMONxQ5ujPw7j2uOzJDOVaKxHT3clz1oVE3ty3i","role":"normalUser","_id":"2NbyKgnrS7YnEhfW"}
+{"user":"Rob","password":"$2b$10$Lfbl2oo30kde2EuhsO5CX.9dPAGRdwT3XamnqKAOz3SprFx1uwUqG","role":"normalUser","_id":"2YQr3PILLiTYh50D"}
+{"user":"Beth","password":"$2b$10$QtKW1vfh8Ap5ir1HjZWcHuWXPxt5MAJ9OHextEcwWblQP3F.hE7Ri","role":"normalUser","_id":"2sbOlPwRMR2MM9q2"}
+{"user":"Liz","password":"$2b$10$cMu.Zf/fmswy7tRPVq2kEuQ.bzOHmTWOpYOvLX1kSfzntmgYw8spa","role":"normalUser","_id":"4gyvSHEkiDyaRXHO"}
+{"user":"Allan","password":"$2b$10$DiBI7MqhO.5qxKLQj7.RM.ghUNgLiHrCCANEDSWbko5hxoQkjVkLu","role":"normalUser","_id":"8aSKyzLH06fY8uZR"}
+{"user":"Alice","password":"$2b$10$kk1lVTJID0AVmX4.zxopium90dPXa0CylZPWtmOWuadEHTBe//Gzu","role":"admin","_id":"N5rwAAFjGwI0J3Es"}
+{"user":"John","password":"$2b$10$aYK7hjjrmbH7NRx3sZBvC.T2qqVARzFwoGNS2ZL/aPkgTqvbD1Prm","role":"normalUser","_id":"NsFSAVGQMKwNBoRj"}
+{"user":"Ellie","password":"$2b$10$3mmmlyCjEjwQAe/T5Xmk1.MPtiG6hgVGBuDhg26HBg4JiTXMFTbRW","role":"admin","_id":"PpT5svsfNRrg8373"}
+{"user":"Bob","password":"$2b$10$psyGMLTV.guH2lsic3BX/OpeWzBoVKMJUhBoD7Cd2Tnc2cY8gcY4K","role":"normalUser","_id":"RjORgrUx3iHH4zGg"}
+{"user":"Fiona","password":"$2b$10$Wf.tEAostPRjp.kehiWUMuCkudXeQTHLkGnNhGLG5sWeZcfYkoByy","role":"admin","_id":"SXHyi2tVGt7m5jLp"}
+{"user":"Harry","password":"$2b$10$eAWN1ctm2CNZaO3kEYuXwuTlZ9TmkS.RKB3HSUECFxRvT2svlXJ..","role":"normalUser","_id":"Tbu1vUwmaq5jsHQt"}
+{"user":"Gary","password":"$2b$10$CjYXhzM8rLNK83E2K6dvDu/UP.SpEG6ez7/e.aCndT34pd3gu9JtK","role":"normalUser","_id":"UL0XEz8i2C6zKOqX"}
+{"user":"test","password":"$2b$10$8s1We3Dc48abC7Q2479Cfu5wS7VBfzu3FCQZywkpc5gpwo1SqWvTq","role":"normalUser","_id":"WMcBk1Sxcf7VYHcz"}
+{"user":"Ryan","password":"$2b$10$gxIkH9e/DPVQIXO034gnCenlHM3GUJeQPhqs2EDzk1GtRY8a.iWXW","role":"normalUser","_id":"c6SwrTdFz0033mpZ"}
+{"user":"Phil","password":"$2b$10$umZQ8udKu4iiaQ1oFHP6YuR/2bKrXWgKJ0ElvW1KswHql3F31Yfme","role":"normalUser","_id":"jB8fta4OHaW5BWrw"}
+{"user":"Fred","password":"$2b$10$NovRglJK3dtjML1xptCNcemLsO9wsmx4EDB2HYdzeOkVA8Rtpf43.","role":"normalUser","_id":"ntlpc8eH6SdSpMzK"}
+{"user":"Helen","password":"$2b$10$tzq9vtAhs4/pTcyDEOqVHuS70ibs8ngMV2NmZ1yTFEDhVDld2PUhe","role":"admin","_id":"lR1GdoajXTORLk25"}

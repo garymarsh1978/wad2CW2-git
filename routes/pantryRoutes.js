@@ -1,10 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/pantryController.js');
+const auth =require('../auth/auth')
+router.get('/login', controller.show_login);
+router.post('/login', auth.login, controller.handle_login);
 router.get('/', controller.landing_page);
+router.get('/newfood',auth.verify,controller.show_new_food_entries);
+router.post('/newfood', auth.verify, controller.post_new_food_entry);
+router.get('/register', controller.show_register_page);
+router.post('/register', controller.post_new_user);
+router.get('/loggedIn',auth.verify, controller.loggedIn_landing);
+router.get('/logout', controller.logout);
+//router.get('/admin',auth.verifyAdmin, controller.show_admin);
+///router.get('/adminPostNewUser',auth.verifyAdmin, controller.admin_add_new_user);
+//router.post('/adminPostNewUser',auth.verifyAdmin, controller.admin_post_new_user);
 router.get('/pantry', controller.entries_list);
-router.get('/newfood', controller.new_food_entries);
-router.post('/newfood', controller.post_new_food_entry);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
 router.post('/contact', controller.post_contact_entry);
