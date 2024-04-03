@@ -26,8 +26,7 @@ exports.login = function (req, res, next) {
         });
         res.cookie("jwt", accessToken);
 
-        if 
-          (payload.role == "admin") {
+        if (payload.role == "admin") {
           return res.render("admin", {
             title: "Admin dashboard",
             user: "user",
@@ -35,7 +34,7 @@ exports.login = function (req, res, next) {
         }
         if (payload.role == "normalUser") {
           return res.render("foodEntries", {
-            title: "Welcome",
+            title: "Welcome!",
             user: "user",
           });
         }

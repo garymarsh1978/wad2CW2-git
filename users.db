@@ -13,5 +13,6 @@
 {"user":"test","password":"$2b$10$8s1We3Dc48abC7Q2479Cfu5wS7VBfzu3FCQZywkpc5gpwo1SqWvTq","role":"normalUser","_id":"WMcBk1Sxcf7VYHcz"}
 {"user":"Ryan","password":"$2b$10$gxIkH9e/DPVQIXO034gnCenlHM3GUJeQPhqs2EDzk1GtRY8a.iWXW","role":"normalUser","_id":"c6SwrTdFz0033mpZ"}
 {"user":"Phil","password":"$2b$10$umZQ8udKu4iiaQ1oFHP6YuR/2bKrXWgKJ0ElvW1KswHql3F31Yfme","role":"normalUser","_id":"jB8fta4OHaW5BWrw"}
-{"user":"Fred","password":"$2b$10$NovRglJK3dtjML1xptCNcemLsO9wsmx4EDB2HYdzeOkVA8Rtpf43.","role":"normalUser","_id":"ntlpc8eH6SdSpMzK"}
 {"user":"Helen","password":"$2b$10$tzq9vtAhs4/pTcyDEOqVHuS70ibs8ngMV2NmZ1yTFEDhVDld2PUhe","role":"admin","_id":"lR1GdoajXTORLk25"}
+{"user":"Fred","password":"$2b$10$NovRglJK3dtjML1xptCNcemLsO9wsmx4EDB2HYdzeOkVA8Rtpf43.","role":"normalUser","_id":"ntlpc8eH6SdSpMzK"}
+{"user":"James","password":"$2b$10$ljYubkJinAozs8DuxFzSWOBHTtomDYlVghDQAa3mVjTIVnsEBY5G2","role":"normalUser","_id":"x26uUn83Sw4dclaK"}

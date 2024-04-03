@@ -1,6 +1,6 @@
 const pantryDAO = require('../models/pantryModel.js');
 const contactDAO = require('../models/contactModel.js');
-const userDao = require("../models/userModel.js");
+const userDAO = require("../models/userModel.js");
 
 
 const db = new pantryDAO({ filename: 'pantry.db', autoload: true }); 
@@ -130,12 +130,12 @@ exports.post_new_user = function (req, res) {
             res.send(401, "no user or no password");
             return;
         }
-        userDao.lookup(user, function (err, u) {
+        userDAO.lookup(user, function (err, u) {
             if (u) {
             res.send(401, "User exists:", user);
             return;
             }
-            userDao.create(user, password,role);
+            userDAO.create(user, password,role);
             res.redirect("/login");
             });
           };
@@ -175,45 +175,40 @@ exports.carrots_entries = function(req, res) {
           .catch((err) => {
             console.log("promise rejected", err);
           });
-      };
-      
-exports.logout = function (req, res) {
-        res.clearCookie("jwt").status(200).redirect("/");
-          };
-      
-exports.show_admin = function (req, res) {
-    userDao.getAllUsers()
-    .then((list) => {
-        res.render('admin', {
-        title: 'Admin dashboard',
-        user:'admin',
-        users: list,
-        });
-        
-    })
-    .catch((err) => {
-        console.log("promise rejected", err);
-    });
-};
-exports.admin_add_new_user=function(req, res){
-    res.render('addUser',{ user:'admin'})
+      }; 
     }
-exports.admin_post_new_user = function (req, res) {
-    const user = req.body.username;
-    const password = req.body.pass;
-    const role = req.body.role;
-      
-    if (!user || !password) {
+    exports.show_admin = function (req, res) {
+      userDAO.getAllUsers()
+      .then((list) => {
+         res.render("admin", {
+           title: 'Admin dashboard',
+           user:"admin",
+           users: list,
+         });
+       
+       })
+       .catch((err) => {
+         console.log("promise rejected", err);
+       });
+     };
+    exports.admin_add_new_user=function(req, res){
+      res.render('addUser',{ user:"admin"})
+    }
+    exports.admin_post_new_user = function (req, res) {
+      const user = req.body.username;
+      const password = req.body.pass;
+      const role = req.body.role;
+    
+      if (!user || !password) {
         res.send(401, "no user or no password");
         return;
-    }
-    userDao.lookup(user, function (err, u) {
+      }
+      userDAO.lookup(user, function (err, u) {
         if (u) {
-            res.send(401, "User exists:", user);
-            return;
-          }
-    userDao.create(user, password,role);
-    });
-    res.render("userAdded")
-    };
-}
+          res.send(401, "User exists:", user);
+          return;
+        }
+        userDAO.create(user, password,role);
+      });
+      res.render("userAdded")
+     };
