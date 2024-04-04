@@ -14,7 +14,7 @@ exports.show_login = function (req, res) {
   };
   
 exports.handle_login = function (req, res){
-        res.render('newFoodEntry', {
+        res.render('foodEntries', {
           title: "Welcome to the Scottish Pantry Network",
           user: 'user',
 });
@@ -62,6 +62,7 @@ exports.show_food_type_entries = function(req, res) {
     (foodEntries) => {
     res.render('foodEntries', {
     title: 'Welcome to Scottish Food Pantry Network',
+    user: "user",
     foodEntries: foodEntries,
 });
 }).catch((err) => {
@@ -73,7 +74,7 @@ exports.show_new_food_entries = function(req, res) {
     res.render('newFoodEntry', {
     title: 'Donate a food item',
     user : 'user',
-    })
+    });
     } 
 
 exports.post_new_food_entry = function(req, res) {
@@ -163,26 +164,13 @@ exports.logout = function (req, res) {
 exports.carrots_entries = function(req, res) {
     res.send('<h1>Processing Carrot\'s Donations, see terminal</h1>');
     db.getCarrotsEntries()
-    exports.loggedIn_landing = function (req, res) {
-        db.getAllEntries()
-          .then((list) => {
-            res.render("foodEntries", {
-              title: "Welcome to Scottish Pantry Network",
-              user:"user",
-              foodEntries: list,
-            });
-          })
-          .catch((err) => {
-            console.log("promise rejected", err);
-          });
-      }; 
-    }
+}
     exports.show_admin = function (req, res) {
       userDAO.getAllUsers()
       .then((list) => {
          res.render("admin", {
            title: 'Admin dashboard',
-           user:"admin",
+           user:"user",
            users: list,
          });
        
@@ -212,3 +200,40 @@ exports.carrots_entries = function(req, res) {
       });
       res.render("userAdded")
      };
+    
+      exports.show_pantry = function (req, res) {
+        db.getAllEntries()
+        .then((list) => {
+           res.render("pantry", {
+             title: 'Pantry dashboard',
+             user:"user",
+             foodEntries: list,
+           });
+         
+         })
+         .catch((err) => {
+           console.log("promise rejected", err);
+         });
+       };
+exports.select_food = function (req, res){
+  db.getAllEntries()
+        .then((list) => {
+           res.render("foodSelection", {
+             title: 'Pantry Food Selection Form',
+             user: "user",
+             foodEntries: list,
+           });
+         })
+         .catch((err) => {
+           console.log("promise rejected", err);
+         });
+       };
+       exports.post_selected_food = function (req, res) {
+        const userName = req.body.pantry;
+        const selectedItems = req.body.selectedItems;
+        db.UpdateSelectedFoodItems(selectedItems, userName)
+        res.render("foodItemAdded")
+       };
+      
+      
+  

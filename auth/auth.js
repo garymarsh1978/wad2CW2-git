@@ -31,12 +31,21 @@ exports.login = function (req, res, next) {
           return res.render("admin", {
             title: "Admin dashboard",
             user: "user",
+            username: user,
+          });
+        }
+        if (payload.role == "pantryUser") {
+          return res.render("pantry", {
+            title: "Welcome Pantry User",
+            user: "user",
+            username: user,
           });
         }
         if (payload.role == "normalUser") {
           return res.render("foodEntries", {
-            title: "Welcome",
+            title: "Welcome User",
             user: "user",
+            username: user,
           });
         }
         next();
@@ -65,6 +74,34 @@ exports.verifyAdmin = function (req, res, next) {
   let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
 
   if (payload.role != "admin") {
+    return res.status(403).send();
+  }
+  try {
+    next();
+  } catch (e) {
+    //if an error occured return request unauthorized error
+    res.status(401).send();
+  }
+};
+exports.verifyPantry = function (req, res, next) {
+  let accessToken = req.cookies.jwt;
+  let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+
+  if (payload.role != "pantryUser") {
+    return res.status(403).send();
+  }
+  try {
+    next();
+  } catch (e) {
+    //if an error occured return request unauthorized error
+    res.status(401).send();
+  }
+};
+exports.verifyAdminPantry = function (req, res, next) {
+  let accessToken = req.cookies.jwt;
+  let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+
+  if (payload.role == "normalUser") {
     return res.status(403).send();
   }
   try {
