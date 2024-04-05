@@ -216,7 +216,7 @@ exports.carrots_entries = function(req, res) {
          });
        };
 exports.select_food = function (req, res){
-  db.getAllEntries()
+  db.getAllEntriesAvailable()
         .then((list) => {
            res.render("foodSelection", {
              title: 'Pantry Food Selection Form',
@@ -231,6 +231,15 @@ exports.select_food = function (req, res){
        exports.post_selected_food = function (req, res) {
         const pantry = req.body.pantry;
         const selectedItems = req.body.selectedItems
+        if (!req.body.selectedItems) {
+          response.status(400).send("At least one item must be selected.");
+          return;
+          }
+          if (!req.body.pantry) {
+              response.status(400).send("Pantry name must be entered");
+              return;
+              }
+      
         db.UpdateSelectedFoodItems(selectedItems, pantry);
         res.render("foodItemAdded");
        };

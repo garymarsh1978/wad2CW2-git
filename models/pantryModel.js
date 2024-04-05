@@ -93,17 +93,40 @@ getAllEntries() {
         })
     })
 }
+getAllEntriesAvailable() {
+    //return a Promise object, which can be resolved or rejected
+    return new Promise((resolve, reject) => {
+        //use the find() function of the database to get the data,
+        //error first callback function, err for error, entries for data
+        this.db.find({ $and: [{"depositDate": {$ne: null}, "pantry": null}]}, function(err, foodEntries) {
+            //if error occurs reject Promise
+            if (err) {
+                reject(err);
+            //if no error resolve the promise & return the data
+            } else {
+                resolve(foodEntries);
+                //to see what the returned data looks like
+                console.log('function all() returns: ', foodEntries);
+            }
+        })
+    })
+}
 UpdateSelectedFoodItems(selectedItems, pantry) {
     console.log(selectedItems);
-    const listSize =selectedItems.length;
-    console.log("the length of list is" +   listSize);
     console.log(pantry);
     const todayDate = new Date().toISOString().split('T')[0];
     console.log(todayDate);
-      for (let i=0; i < listSize; i++) {
-      console.log(selectedItems[i]);
+    if (selectedItems.constructor === Array){
+        var listSize =selectedItems.length;
+        console.log("the length of list is" +   listSize);
+    }
+    else {
+        var listSize = 1;
+            console.log("the length of list is" +   listSize);
+    }
+      if (listSize === 1){
       this.db.update(
-        { _id: selectedItems[i] },
+        { _id: selectedItems},
         {  $set: {"selectDate": todayDate, "pantry":pantry}}, { multi: true, returnUpdatedDocs:true},
         function(err, doc) {
             if (err) {
@@ -111,8 +134,24 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
         } else {
         console.log('document updated in the database', doc);
         }
-        })
+        }) 
     } 
+     else {    
+             for (let i=0; i < listSize; i++) {
+        console.log(selectedItems[i]);
+         this.db.update(
+           { _id: selectedItems[i] },
+          {  $set: {"selectDate": todayDate, "pantry":pantry}}, { multi: true, returnUpdatedDocs:true},
+            function(err, doc) {
+              if (err) {
+              console.log('Error updating document',selectedItems);
+           } else {
+           console.log('document updated in the database', doc);
+           }
+           }) 
+     }
+    } 
+    this.db.persistence.compactDatafile();
     }
 
 getEntriesByFoodType(food) {
