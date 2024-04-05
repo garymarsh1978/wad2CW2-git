@@ -229,10 +229,10 @@ exports.select_food = function (req, res){
          });
        };
        exports.post_selected_food = function (req, res) {
-        const userName = req.body.pantry;
-        const selectedItems = req.body.selectedItems;
-        db.UpdateSelectedFoodItems(selectedItems, userName)
-        res.render("foodItemAdded")
+        const pantry = req.body.pantry;
+        const selectedItems = req.body.selectedItems
+        db.UpdateSelectedFoodItems(selectedItems, pantry);
+        res.render("foodItemAdded");
        };
       
       

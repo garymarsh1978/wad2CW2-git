@@ -1,3 +1,4 @@
-{"donator":"Peter Smith","foodType":"Carrots","quantity":"2 kg","harvestDate":"2024-03-16","depositDate":"2024-03-17","_id":"CKykT4UStXBR9Cc4"}
-{"donator":"Ann Budge","foodType":"Apples","quantity":"3 kg","harvestDate":"2024-03-15","depositDate":"2024-03-16","_id":"OMLLjoORlFN69of4"}
-{"selectDate":"2024-04-04","pantry":"Renfrewshire","_id":"OMLLjoORlFN69of4"}
+{"donator":"Peter Smith","foodType":"Carrots","quantity":"2 kg","harvestDate":"2024-03-16","depositDate":"2024-03-17","pantry":null,"selectDate":null,"collectDate":null,"_id":"Ef1hmR6IlaRV4AiK"}
+{"donator":"Ann Budge","foodType":"Apples","quantity":"3 kg","harvestDate":"2024-03-15","depositDate":"2024-03-16","pantry":null,"selectDate":null,"collectDate":null,"_id":"UobLCE90io8wiFuT"}
+{"donator":"Peter Smith","foodType":"Carrots","quantity":"2 kg","harvestDate":"2024-03-16","depositDate":"2024-03-17","pantry":"Renfrewshire","selectDate":"2024-04-05","collectDate":null,"_id":"Ef1hmR6IlaRV4AiK"}
+{"donator":"Ann Budge","foodType":"Apples","quantity":"3 kg","harvestDate":"2024-03-15","depositDate":"2024-03-16","pantry":"Renfrewshire","selectDate":"2024-04-05","collectDate":null,"_id":"UobLCE90io8wiFuT"}

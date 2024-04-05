@@ -17,6 +17,9 @@ class Pantry{
             quantity: '2 kg',
             harvestDate: '2024-03-16',
             depositDate: '2024-03-17',
+            pantry:null,
+            selectDate: null,
+            collectDate:null,
                }); 
         //for later debugging
        console.log('db entry Peter inserted');
@@ -26,6 +29,9 @@ class Pantry{
                 quantity: '3 kg',
                 harvestDate: '2024-03-15',
                 depositDate: '2024-03-16',
+                pantry:null,
+                selectDate: null,
+                collectDate:null,
                }); 
         //for later debugging
         console.log('db entry Ann inserted'); 
@@ -55,6 +61,10 @@ class Pantry{
         foodType: foodType,
         quantity: quantity,
         harvestDate: harvestDate,
+        depositDate: null,
+        pantry:null,
+        selectDate: null,
+        collectDate:null,
         }      
 console.log('entry created', foodEntry);
 this.db.insert(foodEntry, function(err, doc) {
@@ -85,12 +95,16 @@ getAllEntries() {
 }
 UpdateSelectedFoodItems(selectedItems, pantry) {
     console.log(selectedItems);
+    const listSize =selectedItems.length;
+    console.log("the length of list is" +   listSize);
     console.log(pantry);
     const todayDate = new Date().toISOString().split('T')[0];
     console.log(todayDate);
-    this.db.update(
-        { _id: { $in: [selectedItems] } },
-        {  "selectDate": todayDate, "pantry":pantry}, { multi: true, returnUpdatedDocs:true},
+      for (let i=0; i < listSize; i++) {
+      console.log(selectedItems[i]);
+      this.db.update(
+        { _id: selectedItems[i] },
+        {  $set: {"selectDate": todayDate, "pantry":pantry}}, { multi: true, returnUpdatedDocs:true},
         function(err, doc) {
             if (err) {
             console.log('Error updating document',selectedItems);
@@ -99,6 +113,8 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
         }
         })
     } 
+    }
+
 getEntriesByFoodType(food) {
     return new Promise((resolve, reject) => {
     this.db.find({ 'foodType': food }, function(err, foodEntries) {
