@@ -1,0 +1,27 @@
+<<html>
+<head>
+    {{>header}}
+</head>
+    {{^user}}
+<body class="container">  
+  <a id="login" href="/register" class="btn btn-primary">
+    Register
+  </a>
+  <a id="login" href="/login" class="btn btn-primary">
+    Sign in
+  </a>
+{{/user}}
+{{#user}}
+  <a id="logout" href="/logout" class="btn btn-primary">
+    Sign out
+  </a>
+{{/user}}
+ <h1>{{title}}</h1>
+<div class="text-right">
+<a href="/newfood" class="btn btn-primary">
+Donate new Food Item
+</a>
+</div>
+<div> Food Item added.  Remember to drop off at local collection centre as soon as possible.</div>
+</body>
+</html>

@@ -92,8 +92,15 @@ exports.post_new_food_entry = function(req, res) {
         return;
             }
     db.addFoodEntry(req.body.donator,  req.body.foodType, req.body.quantity, req.body.harvestDate);
-    res.redirect("/loggedIn");
-    }
+    res.redirect("/addedFoodEntry")
+  }
+exports.show_added_food_entry = function(req,res) {
+  res.render("addedFoodEntry", {
+    title: 'Thank you for your Donation',
+    user:"user",
+  });
+}
+
 exports.post_contact_entry = function(req, res) {
         console.log('processing post-new_entry controller');
         if (!req.body.firstName) {

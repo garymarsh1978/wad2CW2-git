@@ -5,6 +5,7 @@ const auth =require('../auth/auth.js')
 router.get('/login', controller.show_login);
 router.post('/login', auth.login, controller.handle_login);
 router.get('/', controller.landing_page);
+router.get('/addedFoodEntry', auth.verify, controller.show_added_food_entry);
 router.get('/newfood',auth.verify,controller.show_new_food_entries);
 router.post('/newfood', auth.verify, controller.post_new_food_entry);
 router.get('/register', controller.show_register_page);
