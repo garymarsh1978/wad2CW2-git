@@ -11,7 +11,7 @@ class Pantry{
       } 
     
     init() {
-      this.db.insert({
+    /*  this.db.insert({
             donator:'Peter Smith',
             foodType: 'Carrots',
             quantity: '2 kg',
@@ -21,8 +21,41 @@ class Pantry{
             selectDate: null,
             collectDate:null,
                }); 
+               console.log('db entry Peter inserted');
+        this.db.insert({  
+               donator:'Jimmy Hill',
+               foodType: 'Tomatoes',
+               quantity: '2 kg',
+               harvestDate: '2024-03-06',
+               depositDate: '2024-03-07',
+               pantry:null,
+               selectDate: null,
+               collectDate:null,
+                  }); 
+                  console.log('db entry Jimmy inserted');
+        this.db.insert({  
+                    donator:'Tom Farmer',
+                    foodType: 'Cabbage',
+                    quantity: '3 kg',
+                    harvestDate: '2024-03-05',
+                    depositDate: '2024-03-06',
+                    pantry:null,
+                    selectDate: null,
+                    collectDate:null,
+                    });  */    
         //for later debugging
-       console.log('db entry Peter inserted');
+      /* console.log('db entry Tom inserted');
+       this.db.insert({  
+        donator:'Gerry Rafferty',
+        foodType: 'Potatoes',
+        quantity: '4 kg',
+        harvestDate: '2024-03-10',
+        depositDate: '2024-03-11',
+        pantry:null,
+        selectDate: null,
+        collectDate:null,
+           });  
+         console.log('db entry Gerry inserted');  
             this.db.insert({
                 donator:'Ann Budge',
                 foodType: 'Apples',
@@ -32,9 +65,9 @@ class Pantry{
                 pantry:null,
                 selectDate: null,
                 collectDate:null,
-               }); 
+               });  */
         //for later debugging
-        console.log('db entry Ann inserted'); 
+        //console.log('db entry Ann inserted'); 
         } 
     //a function to return all entries from the database
     getAllEntries() {
@@ -98,7 +131,13 @@ getAllEntriesAvailable() {
     return new Promise((resolve, reject) => {
         //use the find() function of the database to get the data,
         //error first callback function, err for error, entries for data
-        this.db.find({ $and: [{"depositDate": {$ne: null}, "pantry": null}]}, function(err, foodEntries) {
+         var  date = new Date();
+         var day = date.getDate() - 28;
+         date.setDate(day); 
+         console.log(date);
+        const formatDate = date.toISOString().split('T')[0];
+        this.db.find({ $and: [{"depositDate": {$ne: null}, "pantry": null, 
+                      "harvestDate":{ $gte: formatDate}}]}, function(err, foodEntries) {
             //if error occurs reject Promise
             if (err) {
                 reject(err);
