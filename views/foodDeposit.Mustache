@@ -22,7 +22,7 @@
    Donate new Food Item
 </a>
 </div>
-<form method="post" role="form" action="/select">
+<form method="post" role="form" action="/deposit">
 {{#foodEntries}}
    <div class="form-group">
     <label for="foodType">Food Type</label>
@@ -40,21 +40,13 @@
     <label for="Harvest Date">Harvest Date</label>
     <input type="date" readonly="readonly" class="form-control" id="harvestDate" value="{{harvestDate}}">
   </div>
-  <div class="form-group">
-    <label for="Harvest Date">Deposit Date</label>
-    <input type="date" readonly="readonly" class="form-control" id="depositDate" value="{{depositDate}}">
-  </div>
   <div class="form-group"> 
     <label for="Select Item">Select Item</label>
       <input type="checkbox" class="form-control" name="selectedItems" id="selectedItems" value="{{_id}}">
   </div>
   {{/foodEntries}}
-  <div class="form-group"> 
-  <label for="Pantry">Pantry</label>
-   <input type="text"  class="form-control" id="pantry" name="pantry" placeholder="Pantry Name" required>
-  </div>
    <div class="form-group">
-            <input type="submit" value="Select Food Item" class="btn btn-primary">
+            <input type="submit" value="Select Deposit Item" class="btn btn-primary">
    </div> 
 </form>
 </body>

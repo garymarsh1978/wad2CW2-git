@@ -235,7 +235,7 @@ exports.select_food = function (req, res){
            console.log("promise rejected", err);
          });
        };
-       exports.post_selected_food = function (req, res) {
+ exports.post_selected_food = function (req, res) {
         const pantry = req.body.pantry;
         const selectedItems = req.body.selectedItems
         if (!req.body.selectedItems) {
@@ -247,9 +247,36 @@ exports.select_food = function (req, res){
               return;
               }
       
-        db.UpdateSelectedFoodItems(selectedItems, pantry);
+        db.UpdateCollectedFoodItems(selectedItems);
         res.render("foodItemAdded");
        };
-      
-      
+exports.collect_food = function (req, res){
+        db.getAllSelectedItems()
+              .then((list) => {
+                 res.render("foodCollection", {
+                   title: 'Pantry Food Collection Form',
+                   user: "user",
+                   foodEntries: list,
+                 });
+               })
+               .catch((err) => {
+                 console.log("promise rejected", err);
+               });
+             };
+exports.post_collected_food = function (req, res) {
+              const pantry = req.body.pantry;
+              const selectedItems = req.body.selectedItems
+              if (!req.body.selectedItems) {
+                response.status(400).send("At least one item must be selected.");
+                return;
+                }
+                if (!req.body.pantry) {
+                    response.status(400).send("Pantry name must be entered");
+                    return;
+                    }
+            
+              db.UpdateCollectedFoodItems(selectedItems);
+              res.render("foodItemCollected");
+             };
+            
   
