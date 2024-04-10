@@ -17,6 +17,8 @@ router.get('/select',auth.verifyPantry,controller.select_food);
 router.post('/select',auth.verifyPantry,controller.post_selected_food);
 router.get('/collect',auth.verifyAdmin,controller.collect_food);
 router.post('/collect',auth.verifyAdmin,controller.post_collected_food);
+router.get('/deposit',auth.verifyAdmin,controller.deposit_food);
+router.post('/deposit',auth.verifyAdmin,controller.post_deposited_food);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
 router.post('/contact', controller.post_contact_entry);

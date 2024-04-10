@@ -208,7 +208,7 @@ exports.carrots_entries = function(req, res) {
       res.render("userAdded")
      };
     
-      exports.show_pantry = function (req, res) {
+exports.show_pantry = function (req, res) {
         db.getAllEntries()
         .then((list) => {
            res.render("pantry", {
@@ -247,7 +247,7 @@ exports.select_food = function (req, res){
               return;
               }
       
-        db.UpdateCollectedFoodItems(selectedItems);
+        db.UpdateSelectedFoodItems(selectedItems,pantry);
         res.render("foodItemAdded");
        };
 exports.collect_food = function (req, res){
@@ -278,5 +278,27 @@ exports.post_collected_food = function (req, res) {
               db.UpdateCollectedFoodItems(selectedItems);
               res.render("foodItemCollected");
              };
-            
+exports.deposit_food = function (req, res){
+              db.getAllItemsNotDeposited()
+                    .then((list) => {
+                       res.render("foodDeposit", {
+                         title: 'Pantry Food Deposit Form',
+                         user: "user",
+                         foodEntries: list,
+                       });
+                     })
+                     .catch((err) => {
+                       console.log("promise rejected", err);
+                     });
+                   };
+exports.post_deposited_food = function (req, res) {
+                    const selectedItems = req.body.selectedItems;
+                    if (!req.body.selectedItems) {
+                      response.status(400).send("At least one item must be selected.");
+                      return;
+                      }
+                  console.log(selectedItems);               
+db.UpdateDepositedFoodItems(selectedItems);
+res.render("foodItemDeposited");
+};
   

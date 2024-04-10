@@ -150,7 +150,31 @@ getAllEntriesAvailable() {
         })
     })
 }
-UpdateSelectedFoodItems(selectedItems, pantry) {
+getAllItemsNotDeposited() {
+    //return a Promise object, which can be resolved or rejected
+    return new Promise((resolve, reject) => {
+        //use the find() function of the database to get the data,
+        //error first callback function, err for error, entries for data
+         var  date = new Date();
+         var day = date.getDate() - 28;
+         date.setDate(day); 
+         console.log(date);
+        const formatDate = date.toISOString().split('T')[0];
+        this.db.find({ $and: [{"depositDate": null, "pantry": null, 
+                      "harvestDate":{ $gte: formatDate}}]}, function(err, foodEntries) {
+            //if error occurs reject Promise
+            if (err) {
+                reject(err);
+            //if no error resolve the promise & return the data
+            } else {
+                resolve(foodEntries);
+                //to see what the returned data looks like
+                console.log('function all() returns: ', foodEntries);
+            }
+        })
+    })
+}
+UpdateDepositedFoodItems(selectedItems) {
     console.log(selectedItems);
     console.log(pantry);
     const todayDate = new Date().toISOString().split('T')[0];
@@ -166,7 +190,7 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
       if (listSize === 1){
       this.db.update(
         { _id: selectedItems},
-        {  $set: {"selectDate": todayDate, "pantry":pantry}}, { multi: true, returnUpdatedDocs:true},
+        {  $set: {"depositDate": todayDate}}, { multi: true, returnUpdatedDocs:true},
         function(err, doc) {
             if (err) {
             console.log('Error updating document',selectedItems);
@@ -180,7 +204,7 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
         console.log(selectedItems[i]);
          this.db.update(
            { _id: selectedItems[i] },
-          {  $set: {"selectDate": todayDate, "pantry":pantry}}, { multi: true, returnUpdatedDocs:true},
+          {  $set: {"depositDate": todayDate}}, { multi: true, returnUpdatedDocs:true},
             function(err, doc) {
               if (err) {
               console.log('Error updating document',selectedItems);
@@ -192,7 +216,6 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
     } 
     this.db.persistence.compactDatafile();
     }
-
 getEntriesByFoodType(food) {
     return new Promise((resolve, reject) => {
     this.db.find({ 'foodType': food }, function(err, foodEntries) {
@@ -331,6 +354,48 @@ UpdateCollectedFoodItems(selectedItems) {
         } 
         this.db.persistence.compactDatafile();
         }
+
+UpdateDepositedFoodItems(selectedItems) {
+            console.log(selectedItems);
+            const todayDate = new Date().toISOString().split('T')[0];
+            console.log(todayDate);
+            if (selectedItems.constructor === Array){
+                var listSize =selectedItems.length;
+                console.log("the length of list is" +   listSize);
+            }
+            else {
+                var listSize = 1;
+                    console.log("the length of list is" +   listSize);
+            }
+              if (listSize === 1){
+              this.db.update(
+                { _id: selectedItems},
+                {  $set: {"depositDate": todayDate}}, { multi: true, returnUpdatedDocs:true},
+                function(err, doc) {
+                    if (err) {
+                    console.log('Error updating document',selectedItems);
+                } else {
+                console.log('document updated in the database', doc);
+                }
+                }) 
+            } 
+             else {    
+                     for (let i=0; i < listSize; i++) {
+                console.log(selectedItems[i]);
+                 this.db.update(
+                   { _id: selectedItems[i] },
+                  {  $set: {"depositDate": todayDate}}, { multi: true, returnUpdatedDocs:true},
+                    function(err, doc) {
+                      if (err) {
+                      console.log('Error updating document',selectedItems);
+                   } else {
+                   console.log('document updated in the database', doc);
+                   }
+                   }) 
+             }
+            } 
+            this.db.persistence.compactDatafile();
+            }
 }
 
 //make the module visible outside
