@@ -13,3 +13,4 @@
 {"user":"Helen","password":"$2b$10$tzq9vtAhs4/pTcyDEOqVHuS70ibs8ngMV2NmZ1yTFEDhVDld2PUhe","role":"admin","_id":"lR1GdoajXTORLk25"}
 {"user":"Fred","password":"$2b$10$NovRglJK3dtjML1xptCNcemLsO9wsmx4EDB2HYdzeOkVA8Rtpf43.","role":"normalUser","_id":"ntlpc8eH6SdSpMzK"}
 {"user":"James","password":"$2b$10$ljYubkJinAozs8DuxFzSWOBHTtomDYlVghDQAa3mVjTIVnsEBY5G2","role":"normalUser","_id":"x26uUn83Sw4dclaK"}
+{"user":"Grant","password":"$2b$10$Rfx7DbHDQTk1LGxZNFLrgeqUMByEDeruzAzwEPJ2j2AY3.bST8ZqS","role":"normalUser","_id":"zF296I7BU81rrpJE"}
