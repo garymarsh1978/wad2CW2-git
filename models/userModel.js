@@ -71,6 +71,43 @@ class UserDAO {
     });
     });
   }
+deleteUsers(selectedUsers) {
+    console.log(selectedUsers);
+    if (selectedUsers.constructor === Array){
+        var listSize =selectedUsers.length;
+        console.log("the length of list is" +   listSize);
+    }
+    else {
+        var listSize = 1;
+            console.log("the length of list is" +   listSize);
+    }
+      if (listSize === 1){
+        this.db.remove({ _id: selectedUsers },
+             function (err, doc)              
+        {
+            if (err) {
+            console.log('Error deleting user document',selectedUsers);
+        } else {
+        console.log('document deleted user in the database', doc);
+        }
+        }) 
+    } 
+     else {    
+             for (let i=0; i < listSize; i++) {
+        console.log(selectedUsers[i]);
+        this.db.remove({ _id: selectedUsers[i] }, { multi: true },
+        function(err, doc) {
+              if (err) {
+              console.log('Error deleting document',selectedUsers);
+           } else {
+           console.log('document deleted from the database', doc);
+           }
+           }) 
+     }
+    } 
+    this.db.persistence.compactDatafile();
+    }
+ 
 }
 
 const dao = new UserDAO({ filename: "users.db", autoload: true });

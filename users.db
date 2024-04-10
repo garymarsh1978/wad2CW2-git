@@ -1,7 +1,3 @@
-{"user":"Peter","password":"$2b$10$5.YNO1fwGfMkobDMONxQ5ujPw7j2uOzJDOVaKxHT3clz1oVE3ty3i","role":"normalUser","_id":"2NbyKgnrS7YnEhfW"}
-{"user":"Rob","password":"$2b$10$Lfbl2oo30kde2EuhsO5CX.9dPAGRdwT3XamnqKAOz3SprFx1uwUqG","role":"normalUser","_id":"2YQr3PILLiTYh50D"}
-{"user":"Beth","password":"$2b$10$QtKW1vfh8Ap5ir1HjZWcHuWXPxt5MAJ9OHextEcwWblQP3F.hE7Ri","role":"normalUser","_id":"2sbOlPwRMR2MM9q2"}
-{"user":"Liz","password":"$2b$10$cMu.Zf/fmswy7tRPVq2kEuQ.bzOHmTWOpYOvLX1kSfzntmgYw8spa","role":"normalUser","_id":"4gyvSHEkiDyaRXHO"}
 {"user":"Allan","password":"$2b$10$DiBI7MqhO.5qxKLQj7.RM.ghUNgLiHrCCANEDSWbko5hxoQkjVkLu","role":"normalUser","_id":"8aSKyzLH06fY8uZR"}
 {"user":"Alice","password":"$2b$10$kk1lVTJID0AVmX4.zxopium90dPXa0CylZPWtmOWuadEHTBe//Gzu","role":"admin","_id":"N5rwAAFjGwI0J3Es"}
 {"user":"John","password":"$2b$10$aYK7hjjrmbH7NRx3sZBvC.T2qqVARzFwoGNS2ZL/aPkgTqvbD1Prm","role":"normalUser","_id":"NsFSAVGQMKwNBoRj"}

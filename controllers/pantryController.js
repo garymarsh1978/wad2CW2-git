@@ -172,7 +172,7 @@ exports.carrots_entries = function(req, res) {
     res.send('<h1>Processing Carrot\'s Donations, see terminal</h1>');
     db.getCarrotsEntries()
 }
-    exports.show_admin = function (req, res) {
+exports.show_admin = function (req, res) {
       userDAO.getAllUsers()
       .then((list) => {
          res.render("admin", {
@@ -324,4 +324,27 @@ exports.post_removed_food = function (req, res) {
 db.DeleteOutOfDateFoodItems(selectedItems);
 res.render("foodItemRemoved");
 };
-  
+exports.show_delete_users = function (req, res) {
+  userDAO.getAllUsers()
+  .then((list) => {
+     res.render("deleteUser", {
+       title: 'Delete User Form',
+       user:"user",
+       users: list,
+     });
+   
+   })
+   .catch((err) => {
+     console.log("promise rejected", err);
+   });
+ };
+exports.post_deleted_user = function (req, res) {
+  const selectedUsers = req.body.selectedUsers;
+  if (!req.body.selectedUsers) {
+    response.status(400).send("At least one item must be selected.");
+    return;
+    }
+console.log(selectedUsers);               
+userDAO.deleteUsers(selectedUsers);
+res.render("userDeleted");
+};

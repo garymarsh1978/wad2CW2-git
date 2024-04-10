@@ -16,6 +16,7 @@
     <a id="View Food Items" href="/loggedIn" class="btn btn-primary">
    View Food Items
   </a>
+
 <a id="Process Deposit of Food Items" href="/deposit" class="btn btn-primary">
    Process Deposit of Food Items
   </a>
@@ -25,37 +26,39 @@
 <a id="Remove Food" href="/remove" class="btn btn-primary">
 Remove Out of Date Food Item
 </a>
-<br><br>
+<br>
+<br>
 <a id="Donate Food" href="/newfood" class="btn btn-primary">
 Donate Food Item
 </a>
   <a id="addUser" href="/adminPostNewUser" class="btn btn-primary">
     Add user
   </a>
-</a>
-  <a id="deleteUser" href="/deleteUser" class="btn btn-primary">
-    Delete user
-  </a>
-
     <a id="logout" href="/logout" class="btn btn-primary">
         Sign out
 </a>
-
 {{/user}}
 </div>
 <h1>{{title}}</h1>
 <div>
+<form method="post" role="form" action="/deleteUser">
 {{#users}}
-  <div class="card">
-    <div class="card-body">
-          <h4 class="card-title">User name : {{user}}</h4>
-          <p class="card-text">
-              Role : {{role}}
-          </p>
-    </div>
+ <div class="form-group">
+    <label for="UserName">User Name</label>
+    <input type="text" readonly="readonly" class="form-control" id="userName" value="{{user}}">
   </div>
- {{/users}}
+   <div class="form-group">
+    <label for="role">Role</label>
+    <input type="text" readonly="readonly" class="form-control" id="role" value="{{role}}">
   </div>
-</div>
+  <div class="form-group"> 
+    <label for="Select User">Select User For Deletion</label>
+      <input type="checkbox" class="form-control" name="selectedUsers" id="selectedUsers" value="{{_id}}">
+  </div>
+   {{/users}}
+    <div class="form-group">
+            <input type="submit" value="Select User for Deletion" class="btn btn-primary">
+   </div> 
+</form>
 </body>
 </html>
