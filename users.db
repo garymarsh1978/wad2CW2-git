@@ -1,6 +1,5 @@
-{"user":"Allan","password":"$2b$10$DiBI7MqhO.5qxKLQj7.RM.ghUNgLiHrCCANEDSWbko5hxoQkjVkLu","role":"normalUser","_id":"8aSKyzLH06fY8uZR"}
+{"user":"Henry","password":"$2b$10$WD.Aw65mK/dpnDh/lmg1m.N9qLBeQuqDtyrArckG4lBpe8TeDaowS","role":"admin","_id":"KKszjfcdnHTFzCRw"}
 {"user":"Alice","password":"$2b$10$kk1lVTJID0AVmX4.zxopium90dPXa0CylZPWtmOWuadEHTBe//Gzu","role":"admin","_id":"N5rwAAFjGwI0J3Es"}
-{"user":"John","password":"$2b$10$aYK7hjjrmbH7NRx3sZBvC.T2qqVARzFwoGNS2ZL/aPkgTqvbD1Prm","role":"normalUser","_id":"NsFSAVGQMKwNBoRj"}
 {"user":"Ellie","password":"$2b$10$3mmmlyCjEjwQAe/T5Xmk1.MPtiG6hgVGBuDhg26HBg4JiTXMFTbRW","role":"admin","_id":"PpT5svsfNRrg8373"}
 {"user":"Renfrewshire","password":"$2b$10$d.byy7P5fdZmPgUr8PjpG.Yi9DaCxdEwhiclOb/mGtMfPY0J1PZOW","role":"pantryUser","_id":"QQFUtrSY5eA3Sn8k"}
 {"user":"Bob","password":"$2b$10$psyGMLTV.guH2lsic3BX/OpeWzBoVKMJUhBoD7Cd2Tnc2cY8gcY4K","role":"normalUser","_id":"RjORgrUx3iHH4zGg"}
