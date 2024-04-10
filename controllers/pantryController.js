@@ -301,4 +301,27 @@ exports.post_deposited_food = function (req, res) {
 db.UpdateDepositedFoodItems(selectedItems);
 res.render("foodItemDeposited");
 };
+exports.remove_food = function (req, res){
+  db.getAllOutOFDateFood()
+        .then((list) => {
+           res.render("outOfDateFood", {
+             title: 'Out of date Food Form',
+             user: "user",
+             foodEntries: list,
+           });
+         })
+         .catch((err) => {
+           console.log("promise rejected", err);
+         });
+       };
+exports.post_removed_food = function (req, res) {
+        const selectedItems = req.body.selectedItems;
+        if (!req.body.selectedItems) {
+          response.status(400).send("At least one item must be selected.");
+          return;
+          }
+      console.log(selectedItems);               
+db.DeleteOutOfDateFoodItems(selectedItems);
+res.render("foodItemRemoved");
+};
   

@@ -150,6 +150,30 @@ getAllEntriesAvailable() {
         })
     })
 }
+getAllOutOFDateFood() {
+    //return a Promise object, which can be resolved or rejected
+    return new Promise((resolve, reject) => {
+        //use the find() function of the database to get the data,
+        //error first callback function, err for error, entries for data
+         var  date = new Date();
+         var day = date.getDate() - 28;
+         date.setDate(day); 
+         console.log(date);
+        const formatDate = date.toISOString().split('T')[0];
+        this.db.find({ $and: [{"depositDate": {$ne: null}, "pantry": null, 
+        "harvestDate":{ $lt: formatDate}}]}, function(err, foodEntries) {
+            //if error occurs reject Promise
+            if (err) {
+                reject(err);
+            //if no error resolve the promise & return the data
+            } else {
+                resolve(foodEntries);
+                //to see what the returned data looks like
+                console.log('function all() returns: ', foodEntries);
+            }
+        })
+    })
+}
 getAllItemsNotDeposited() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -396,6 +420,42 @@ UpdateDepositedFoodItems(selectedItems) {
             } 
             this.db.persistence.compactDatafile();
             }
+DeleteOutOfDateFoodItems(selectedItems) {
+                console.log(selectedItems);
+                if (selectedItems.constructor === Array){
+                    var listSize =selectedItems.length;
+                    console.log("the length of list is" +   listSize);
+                }
+                else {
+                    var listSize = 1;
+                        console.log("the length of list is" +   listSize);
+                }
+                  if (listSize === 1){
+                    this.db.remove({ _id: selectedItems }, { multi: true },
+                         function (err, doc)              
+                    {
+                        if (err) {
+                        console.log('Error deleting document',selectedItems);
+                    } else {
+                    console.log('document deleted in the database', doc);
+                    }
+                    }) 
+                } 
+                 else {    
+                         for (let i=0; i < listSize; i++) {
+                    console.log(selectedItems[i]);
+                    this.db.remove({ _id: selectedItems[i] }, { multi: true },
+                    function(err, doc) {
+                          if (err) {
+                          console.log('Error deleting document',selectedItems);
+                       } else {
+                       console.log('document deleted from the database', doc);
+                       }
+                       }) 
+                 }
+                } 
+                this.db.persistence.compactDatafile();
+                }
 }
 
 //make the module visible outside
