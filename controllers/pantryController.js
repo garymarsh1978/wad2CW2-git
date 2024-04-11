@@ -304,7 +304,11 @@ exports.post_collected_food = function (req, res) {
                     }
             
               db.UpdateCollectedFoodItems(selectedItems);
-              res.render("foodItemCollected");
+              res.render("foodItemCollected",
+              {
+                title: 'Food Item Collected',
+                user: "user",
+              });
              };
 exports.deposit_food = function (req, res){
               db.getAllItemsNotDeposited()
@@ -327,7 +331,11 @@ exports.post_deposited_food = function (req, res) {
                       }
                   console.log(selectedItems);               
 db.UpdateDepositedFoodItems(selectedItems);
-res.render("foodItemDeposited");
+res.render("foodItemDeposited",
+{
+  title: 'Food Item Deposit',
+  user: "user",
+});
 };
 exports.remove_food = function (req, res){
   db.getAllOutOFDateFood()
@@ -350,7 +358,11 @@ exports.post_removed_food = function (req, res) {
           }
       console.log(selectedItems);               
 db.DeleteOutOfDateFoodItems(selectedItems);
-res.render("foodItemRemoved");
+res.render("foodItemRemoved",
+{
+  title: 'Food Item Removed',
+  user: "user",
+});
 };
 exports.show_delete_users = function (req, res) {
   userDAO.getAllUsers()
@@ -374,5 +386,9 @@ exports.post_deleted_user = function (req, res) {
     }
 console.log(selectedUsers);               
 userDAO.deleteUsers(selectedUsers);
-res.render("userDeleted");
+res.render("userDeleted",
+{
+  title: 'User Deleted',
+  user: "user",
+});
 };
