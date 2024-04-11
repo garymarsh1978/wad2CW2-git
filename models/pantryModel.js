@@ -258,6 +258,24 @@ getEntriesByFoodType(food) {
     })
     })
     }
+    getDepositedEntriesByFoodType(food) {
+        var  date = new Date();
+        var day = date.getDate() - 28;
+        date.setDate(day); 
+        console.log(date);
+       const formatDate = date.toISOString().split('T')[0];
+        return new Promise((resolve, reject) => {
+        this.db.find({  $and: [{ "pantry": null, "foodType": food,"depositDate":{$ne: null},
+        "harvestDate":{ $gte: formatDate}}]}, function(err, foodEntries) {
+        if (err) {
+        reject(err);
+        } else {
+        resolve(foodEntries);
+        console.log('getEntriesByFoodType returns: ', foodEntries);
+        }
+        })
+        })
+        }
     getCarrotsEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {

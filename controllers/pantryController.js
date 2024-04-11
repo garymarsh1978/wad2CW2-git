@@ -111,7 +111,22 @@ exports.show_food_type_entries = function(req, res) {
 console.log('error handling Food Types', err);
 });
 }
-    
+exports.show_deposited_food_type_entries = function(req, res) {
+  const username = req.username
+    console.log('filtering by Food Type', req.params.foodType);
+    let food = req.params.foodType;
+    db.getDepositedEntriesByFoodType(food).then(
+    (foodEntries) => {
+    res.render('foodEntries', {
+    title: 'Welcome to Scottish Food Pantry Network',
+    user: "user",
+    foodEntries: foodEntries,
+    username: username,
+});
+}).catch((err) => {
+console.log('error handling Food Types', err);
+});
+}   
 exports.show_new_food_entries = function(req, res) {
     res.render('newFoodEntry', {
     title: 'Donate a food item',

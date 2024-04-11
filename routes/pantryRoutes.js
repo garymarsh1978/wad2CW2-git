@@ -11,7 +11,8 @@ router.post('/newfood', auth.verify, controller.post_new_food_entry);
 router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);
 router.get('/loggedIn',auth.verify, controller.loggedIn_landing);
-router.get('/pantry', auth.verifyAdminPantry,controller.pantry_entries_list);
+router.get('/pantry', auth.verifyPantry,controller.pantry_entries_list);
+router.get('/pantry/:foodType', auth.verifyPantry,controller.show_deposited_food_type_entries);
 router.get('/adminfood', auth.verifyAdmin,controller.all_entries_list);
 router.get('/pantryDash', auth.verifyAdminPantry,controller.show_pantry);
 router.get('/select',auth.verifyPantry,controller.select_food);
@@ -27,8 +28,8 @@ router.post('/deleteUser',auth.verifyAdmin,controller.post_deleted_user);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
 router.post('/contact', controller.post_contact_entry);
-router.get('/messages', auth.verifyAdmin, controller.contacts_list);
-router.get('/pantry/:foodType',auth.verifyAdminPantry,controller.show_food_type_entries);
+router.get('/messages', auth.verifyAdmin, controller.contacts_list)
+router.get('/adminfood/:foodType',auth.verifyAdmin,controller.show_food_type_entries);
 router.get('/about', function(req, res) {
     res.redirect('/about.html');
 })
