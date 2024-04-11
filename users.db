@@ -1,9 +1,7 @@
 {"user":"Henry","password":"$2b$10$WD.Aw65mK/dpnDh/lmg1m.N9qLBeQuqDtyrArckG4lBpe8TeDaowS","role":"admin","_id":"KKszjfcdnHTFzCRw"}
-{"user":"Alice","password":"$2b$10$kk1lVTJID0AVmX4.zxopium90dPXa0CylZPWtmOWuadEHTBe//Gzu","role":"admin","_id":"N5rwAAFjGwI0J3Es"}
 {"user":"Ellie","password":"$2b$10$3mmmlyCjEjwQAe/T5Xmk1.MPtiG6hgVGBuDhg26HBg4JiTXMFTbRW","role":"admin","_id":"PpT5svsfNRrg8373"}
 {"user":"Renfrewshire","password":"$2b$10$d.byy7P5fdZmPgUr8PjpG.Yi9DaCxdEwhiclOb/mGtMfPY0J1PZOW","role":"pantryUser","_id":"QQFUtrSY5eA3Sn8k"}
 {"user":"Bob","password":"$2b$10$psyGMLTV.guH2lsic3BX/OpeWzBoVKMJUhBoD7Cd2Tnc2cY8gcY4K","role":"normalUser","_id":"RjORgrUx3iHH4zGg"}
-{"user":"Fiona","password":"$2b$10$Wf.tEAostPRjp.kehiWUMuCkudXeQTHLkGnNhGLG5sWeZcfYkoByy","role":"admin","_id":"SXHyi2tVGt7m5jLp"}
 {"user":"Easterhouse","password":"$2b$10$U1tOnCqutoHHyAf/c8/eJebmErQWUhYW35C3J7sv0XpjUzDwfEXo.","role":"pantryUser","_id":"Stm71YD4NRraYx0J"}
 {"user":"Harry","password":"$2b$10$eAWN1ctm2CNZaO3kEYuXwuTlZ9TmkS.RKB3HSUECFxRvT2svlXJ..","role":"normalUser","_id":"Tbu1vUwmaq5jsHQt"}
 {"user":"Gary","password":"$2b$10$CjYXhzM8rLNK83E2K6dvDu/UP.SpEG6ez7/e.aCndT34pd3gu9JtK","role":"normalUser","_id":"UL0XEz8i2C6zKOqX"}
@@ -12,5 +10,6 @@
 {"user":"Phil","password":"$2b$10$umZQ8udKu4iiaQ1oFHP6YuR/2bKrXWgKJ0ElvW1KswHql3F31Yfme","role":"normalUser","_id":"jB8fta4OHaW5BWrw"}
 {"user":"Helen","password":"$2b$10$tzq9vtAhs4/pTcyDEOqVHuS70ibs8ngMV2NmZ1yTFEDhVDld2PUhe","role":"admin","_id":"lR1GdoajXTORLk25"}
 {"user":"Fred","password":"$2b$10$NovRglJK3dtjML1xptCNcemLsO9wsmx4EDB2HYdzeOkVA8Rtpf43.","role":"normalUser","_id":"ntlpc8eH6SdSpMzK"}
+{"user":"Gerry","password":"$2b$10$KPpJtLVV/H9UY8/Ee8YC/.W7xd9PqNZ4xqy4//0iOwzL0HSSdDti6","role":"normalUser","_id":"pxO4jpLPexD3s7d5"}
 {"user":"James","password":"$2b$10$ljYubkJinAozs8DuxFzSWOBHTtomDYlVghDQAa3mVjTIVnsEBY5G2","role":"normalUser","_id":"x26uUn83Sw4dclaK"}
 {"user":"Grant","password":"$2b$10$Rfx7DbHDQTk1LGxZNFLrgeqUMByEDeruzAzwEPJ2j2AY3.bST8ZqS","role":"normalUser","_id":"zF296I7BU81rrpJE"}

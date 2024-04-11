@@ -43,12 +43,40 @@ console.log('promise rejected', err);
 })
 }
 exports.entries_list = function(req, res) {
-    db.getAllEntries()
+    db.getAllEntriesAvailable()
     .then((list) => {
         res.render('foodEntries', {
         title: 'Welcome to Scottish Food Pantry Network',
         foodEntries: list,
     });
+console.log('promise resolved');
+})
+.catch((err) => {
+console.log('promise rejected', err);
+})
+}
+exports.pantry_entries_list = function(req, res) {
+  db.getAllEntriesAvailable()
+  .then((list) => {
+      res.render('pantryFoodEntries', {
+      title: 'All Available Deposited Food',
+      foodEntries: list,
+      user:"user",
+  });
+console.log('promise resolved');
+})
+.catch((err) => {
+console.log('promise rejected', err);
+})
+}
+exports.all_entries_list = function(req, res) {
+  db.getAllEntries()
+    .then((list) => {
+      res.render('foodEntriesAdmin', {
+      title: 'All Food Items including those not deposited yet',
+      foodEntries: list,
+      user:"user",
+  });
 console.log('promise resolved');
 })
 .catch((err) => {
@@ -150,7 +178,7 @@ exports.post_new_user = function (req, res) {
           
 
 exports.loggedIn_landing = function (req, res) {
-    db.getAllEntries()
+    db.getAllEntriesAvailable()
     .then((list) => {
         res.render('foodEntries', {
         title: 'Welcome!',
@@ -209,7 +237,7 @@ exports.show_admin = function (req, res) {
      };
     
 exports.show_pantry = function (req, res) {
-        db.getAllEntries()
+        db.getAllEntriesAvailable()
         .then((list) => {
            res.render("pantry", {
              title: 'Pantry dashboard',

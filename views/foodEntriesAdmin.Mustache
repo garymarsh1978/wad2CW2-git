@@ -43,26 +43,27 @@ Donate Food Item
   </a>
 {{/user}}
 </div>
-<h1>{{title}}</h1>
+    <h1>{{title}}</h1>
+    {{#foodEntries}}
+<div>    
+    <h4> <a href="/pantry/{{foodType}}">{{foodType}}</a> </h4>
+</div>    
+<p>
+{{quantity}}
+</p>
+<p>
+{{harvestDate}}
+</p>
+
 <div>
-<form method="post" role="form" action="/deleteUser">
-{{#users}}
- <div class="form-group">
-    <label for="UserName">User Name</label>
-    <input type="text" readonly="readonly" class="form-control" id="userName" value="{{user}}">
-  </div>
-   <div class="form-group">
-    <label for="role">Role</label>
-    <input type="text" readonly="readonly" class="form-control" id="role" value="{{role}}">
-  </div>
-  <div class="form-group"> 
-    <label for="Select User">Select User For Deletion</label>
-      <input type="checkbox" class="form-control" name="selectedUsers" id="selectedUsers" value="{{_id}}">
-  </div>
-   {{/users}}
-    <div class="form-group">
-            <input type="submit" value="Select User for Deletion" class="btn btn-primary">
-   </div> 
-</form>
+<p>Donated by {{donator}} ,  deposited on {{depositDate}}</p>
+</div>
+{{/foodEntries}}
+{{^foodEntries}}
+No Food Donations Available yet.
+{{/foodEntries}}
 </body>
+<footer>
+{{>footer}}
+</footer>
 </html>
