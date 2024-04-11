@@ -10,13 +10,17 @@ const contactdb = new contactDAO({ filename: 'contacts.db', autoload: true });
 // to set database up in virtual memory use const db = new contactDAO();
 contactdb.init();
 exports.show_login = function (req, res) {
-    res.render("user/login");
-  };
-  
+  const username = req.username
+    res.render("user/login",{
+         username :username,
+  });
+};
 exports.handle_login = function (req, res){
+  const username = req.username
         res.render('foodEntries', {
           title: "Welcome to the Scottish Pantry Network",
           user: 'user',
+          username: username,
 });
       };
 exports.entries_list = function(req, res) {
@@ -30,18 +34,10 @@ exports.contact_page = function(req, res) {
 })
 }
 exports.landing_page = function(req, res) {
-        db.getAllEntries()
-        .then((list) => {
-            res.render('foodEntries', {
-            title: 'Welcome to Scottish Food Pantry Network',
-            foodEntries: list,
-        });
-console.log('promise resolved');
-})
-.catch((err) => {
-console.log('promise rejected', err);
-})
-}
+  res.render('index', {
+    title: 'Welcome to Scottish Food Pantry Network',
+});
+};
 exports.entries_list = function(req, res) {
     db.getAllEntriesAvailable()
     .then((list) => {
@@ -55,13 +51,29 @@ console.log('promise resolved');
 console.log('promise rejected', err);
 })
 }
+exports.contacts_list = function(req, res) {
+  contactdb.getAllContactEntries()
+  .then((list) => {
+      res.render('ContactEntries', {
+      title: 'Display of Contact Messages',
+      contactEntries: list,
+      user: "user", 
+  });
+console.log('promise resolved');
+})
+.catch((err) => {
+console.log('promise rejected', err);
+})
+}
 exports.pantry_entries_list = function(req, res) {
+  const username = req.username
   db.getAllEntriesAvailable()
   .then((list) => {
       res.render('pantryFoodEntries', {
       title: 'All Available Deposited Food',
       foodEntries: list,
       user:"user",
+      username : username,
   });
 console.log('promise resolved');
 })
@@ -84,6 +96,7 @@ console.log('promise rejected', err);
 })
 }
 exports.show_food_type_entries = function(req, res) {
+  const username = req.username
     console.log('filtering by Food Type', req.params.foodType);
     let food = req.params.foodType;
     db.getEntriesByFoodType(food).then(
@@ -92,6 +105,7 @@ exports.show_food_type_entries = function(req, res) {
     title: 'Welcome to Scottish Food Pantry Network',
     user: "user",
     foodEntries: foodEntries,
+    username: username,
 });
 }).catch((err) => {
 console.log('error handling Food Types', err);
@@ -106,6 +120,7 @@ exports.show_new_food_entries = function(req, res) {
     } 
 
 exports.post_new_food_entry = function(req, res) {
+  const username = req.username
     console.log('processing post-new_entry controller');
     if (!req.body.donator) {
     response.status(400).send("Entries must have an Donator.");
@@ -120,8 +135,13 @@ exports.post_new_food_entry = function(req, res) {
         return;
             }
     db.addFoodEntry(req.body.donator,  req.body.foodType, req.body.quantity, req.body.harvestDate);
-    res.redirect("/addedFoodEntry")
-  }
+    res.render("addedFoodEntry",
+    {
+      title: 'Thanks for your donation ',
+      user: "user",
+      username:username,
+    });
+  };
 exports.show_added_food_entry = function(req,res) {
   res.render("addedFoodEntry", {
     title: 'Thank you for your Donation',
@@ -201,12 +221,14 @@ exports.carrots_entries = function(req, res) {
     db.getCarrotsEntries()
 }
 exports.show_admin = function (req, res) {
+  const username = req.username
       userDAO.getAllUsers()
       .then((list) => {
          res.render("admin", {
            title: 'Admin dashboard',
            user:"user",
            users: list,
+           username : username,
          });
        
        })
@@ -237,12 +259,14 @@ exports.show_admin = function (req, res) {
      };
     
 exports.show_pantry = function (req, res) {
+  const username = req.username;
         db.getAllEntriesAvailable()
         .then((list) => {
            res.render("pantry", {
              title: 'Pantry dashboard',
              user:"user",
              foodEntries: list,
+             username :username,
            });
          
          })
@@ -251,12 +275,14 @@ exports.show_pantry = function (req, res) {
          });
        };
 exports.select_food = function (req, res){
+  const username = req.username;
   db.getAllEntriesAvailable()
         .then((list) => {
            res.render("foodSelection", {
              title: 'Pantry Food Selection Form',
              user: "user",
              foodEntries: list,
+             username :username,
            });
          })
          .catch((err) => {
@@ -264,8 +290,10 @@ exports.select_food = function (req, res){
          });
        };
  exports.post_selected_food = function (req, res) {
+         const username = req.username
         const pantry = req.body.pantry;
         const selectedItems = req.body.selectedItems
+        
         if (!req.body.selectedItems) {
           response.status(400).send("At least one item must be selected.");
           return;
@@ -276,7 +304,8 @@ exports.select_food = function (req, res){
               }
       
         db.UpdateSelectedFoodItems(selectedItems,pantry);
-        res.render("foodItemAdded");
+        res.render("foodItemAdded",{
+        username: username});
        };
 exports.collect_food = function (req, res){
         db.getAllSelectedItems()
@@ -293,7 +322,8 @@ exports.collect_food = function (req, res){
              };
 exports.post_collected_food = function (req, res) {
               const pantry = req.body.pantry;
-              const selectedItems = req.body.selectedItems
+              const selectedItems = req.body.selectedItems;
+              const username = req.username;
               if (!req.body.selectedItems) {
                 response.status(400).send("At least one item must be selected.");
                 return;
@@ -308,15 +338,18 @@ exports.post_collected_food = function (req, res) {
               {
                 title: 'Food Item Collected',
                 user: "user",
+                username:username,
               });
              };
 exports.deposit_food = function (req, res){
+  const username = req.username;
               db.getAllItemsNotDeposited()
                     .then((list) => {
                        res.render("foodDeposit", {
                          title: 'Pantry Food Deposit Form',
                          user: "user",
                          foodEntries: list,
+                         username :username,
                        });
                      })
                      .catch((err) => {
@@ -324,6 +357,7 @@ exports.deposit_food = function (req, res){
                      });
                    };
 exports.post_deposited_food = function (req, res) {
+                    const username = req.username;
                     const selectedItems = req.body.selectedItems;
                     if (!req.body.selectedItems) {
                       response.status(400).send("At least one item must be selected.");
@@ -335,6 +369,7 @@ res.render("foodItemDeposited",
 {
   title: 'Food Item Deposit',
   user: "user",
+  username: username,
 });
 };
 exports.remove_food = function (req, res){

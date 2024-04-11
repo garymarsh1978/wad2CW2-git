@@ -27,6 +27,7 @@ router.post('/deleteUser',auth.verifyAdmin,controller.post_deleted_user);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
 router.post('/contact', controller.post_contact_entry);
+router.get('/messages', auth.verifyAdmin, controller.contacts_list);
 router.get('/pantry/:foodType',auth.verifyAdminPantry,controller.show_food_type_entries);
 router.get('/about', function(req, res) {
     res.redirect('/about.html');

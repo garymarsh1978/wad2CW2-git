@@ -31,21 +31,21 @@ exports.login = function (req, res, next) {
           return res.render("admin", {
             title: "Admin dashboard",
             user: "user",
-            username: user,
+            username: username,
           });
         }
         if (payload.role == "pantryUser") {
           return res.render("pantry", {
-            title: "Welcome Pantry User",
+            title: "Pantry Dashboard",
             user: "user",
-            username: user,
+            username: username,
           });
         }
         if (payload.role == "normalUser") {
-          return res.render("foodEntries", {
+          return res.render("index", {
             title: "Welcome User",
             user: "user",
-            username: user,
+            username: username,
           });
         }
         next();
@@ -58,10 +58,13 @@ exports.login = function (req, res, next) {
 
 exports.verify = function (req, res, next) {
   let accessToken = req.cookies.jwt;
+  let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+  const username = payload.username;
   if (!accessToken) {
     return res.status(403).send();
   }
   try {
+    req.username = username;
     next();
   } catch (e) {
     //if an error occured return request unauthorized error
@@ -72,11 +75,12 @@ exports.verify = function (req, res, next) {
 exports.verifyAdmin = function (req, res, next) {
   let accessToken = req.cookies.jwt;
   let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
-
+  const username = payload.username;
   if (payload.role != "admin") {
     return res.status(403).send();
   }
   try {
+    req.username = username;
     next();
   } catch (e) {
     //if an error occured return request unauthorized error
@@ -86,11 +90,12 @@ exports.verifyAdmin = function (req, res, next) {
 exports.verifyPantry = function (req, res, next) {
   let accessToken = req.cookies.jwt;
   let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
-
+  const username = payload.username;
   if (payload.role != "pantryUser") {
     return res.status(403).send();
   }
   try {
+    req.username = username;
     next();
   } catch (e) {
     //if an error occured return request unauthorized error
@@ -100,11 +105,12 @@ exports.verifyPantry = function (req, res, next) {
 exports.verifyAdminPantry = function (req, res, next) {
   let accessToken = req.cookies.jwt;
   let payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
-
+  const username = payload.username;
   if (payload.role == "normalUser") {
     return res.status(403).send();
   }
   try {
+    req.username = username;
     next();
   } catch (e) {
     //if an error occured return request unauthorized error

@@ -16,11 +16,21 @@
     Sign out
   </a>
 {{/user}}
-    <h1>{{title}}</h1>
-<div class="text-right">
-<a href="/newfood" class="btn btn-primary">
-Donate new Food Item
+{{#user}}
+<div class="text-right" style="margin-bottom: 1em;">
+ <a id="View Deposited Food Items" href="/pantry" class="btn btn-primary">
+   View Deposited Food Items
+  </a>
+   <a id="Select Food Items" href="/select" class="btn btn-primary">
+    Select Food Items
+  </a>
+<a id="Donate Food" href="/newfood" class="btn btn-primary">
+Donate Food Item
 </a>
+</div>
+<h1> Welcome  {{username}} </h1>
+<h3>{{title}}</h3>
+{{/user}}
 </div>
     {{#foodEntries}}
 <div>    

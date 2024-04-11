@@ -30,7 +30,7 @@ class Contact{
         return new Promise((resolve, reject) => {
             //use the find() function of the database to get the data,
             //error first callback function, err for error, entries for data
-            this.db.find({}, function(err, contactEntries) {
+            this.contactdb.find({}, function(err, contactEntries) {
                 //if error occurs reject Promise
                 if (err) {
                     reject(err);

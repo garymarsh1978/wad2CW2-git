@@ -41,26 +41,28 @@ Donate Food Item
   <a id="deleteUser" href="/deleteUser" class="btn btn-primary mr-1 mb-1">
     Delete user
   </a>
-  </a>
-  <a id="messages" href="/messages" class="btn btn-primary mr-1 mb-1">
-    Contact Request Messages
-  </a>
 {{/user}}
 </div>
-<h1> Welcome {{username}} </h1>
-<h3>{{title}}</h3>
+    <h1>{{title}}</h1>
+    {{#contactEntries}}
+<p>
+{{firstName}} {{lastName}}
+</p>
+<p>
+{{email}}
+</p>
 <div>
-{{#users}}
-  <div class="card">
-    <div class="card-body">
-          <h4 class="card-title">User name : {{user}}</h4>
-          <p class="card-text">
-              Role : {{role}}
-          </p>
-    </div>
-  </div>
- {{/users}}
-  </div>
+<p>{{interest}} received on {{receivedDate}}</p>
 </div>
+<div>
+<p> {{message}}</p>
+</div>
+{{/contactEntries}}
+{{^contactEntries}}
+No messages Available yet.
+{{/contactEntries}}
 </body>
+<footer>
+{{>footer}}
+</footer>
 </html>
