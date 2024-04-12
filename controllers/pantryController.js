@@ -82,7 +82,7 @@ console.log('promise rejected', err);
 })
 }
 exports.all_entries_list = function(req, res) {
-  db.getAllEntries()
+  db.getAllAdminItems()
     .then((list) => {
       res.render('foodEntriesAdmin', {
       title: 'All Food Items including those not deposited yet',

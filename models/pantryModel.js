@@ -198,6 +198,30 @@ getAllItemsNotDeposited() {
         })
     })
 }
+getAllAdminItems() {
+    //return a Promise object, which can be resolved or rejected
+    return new Promise((resolve, reject) => {
+        //use the find() function of the database to get the data,
+        //error first callback function, err for error, entries for data
+         var  date = new Date();
+         var day = date.getDate() - 28;
+         date.setDate(day); 
+         console.log(date);
+        const formatDate = date.toISOString().split('T')[0];
+        this.db.find({ $and: [{ "pantry":null, 
+                      "harvestDate":{ $gte: formatDate}}]}, function(err, foodEntries) {
+            //if error occurs reject Promise
+            if (err) {
+                reject(err);
+            //if no error resolve the promise & return the data
+            } else {
+                resolve(foodEntries);
+                //to see what the returned data looks like
+                console.log('function all() returns: ', foodEntries);
+            }
+        })
+    })
+}
 UpdateDepositedFoodItems(selectedItems) {
     console.log(selectedItems);
     console.log(pantry);
