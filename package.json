@@ -4,7 +4,9 @@
   "description": "WAD2 Coursework2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass-watch": "sass --no-source-map --watch styles/modifyBoots.scss public/css/style.css",
+    "nodemon-watch": "nodemon index.js -e *",
+    "dev": "npm-run-all --parallel sass-watch nodemon-watch"
   },
   "repository": {
     "type": "git",
@@ -19,12 +21,18 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.1",
     "gray-nedb": "^1.8.3",
     "jsonwebtoken": "^9.0.2",
     "mustache-express": "^1.3.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sass": "^1.75.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "npm-run-all": "^4.1.5"
   }
 }
