@@ -20,7 +20,8 @@ const public = path.join(__dirname,'public');
 app.use(express.static(public));
 const router = require('./routes/pantryRoutes');
 app.use('/', router); 
-
+const path = require('path')
+app.set('views', path.join(__dirname, 'views'));
 const port = process.env.PORT || 3000;
 app.listen(port, () =>
  console.log(
