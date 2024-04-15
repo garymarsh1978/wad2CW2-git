@@ -14,8 +14,8 @@ extended: false
 }))
 const path = require('path');
 app.use(express.urlencoded({ extended: false }));
-
-app.set('views', './views');
+const views = path.join(__dirname,'views');
+app.set('views', views)
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
