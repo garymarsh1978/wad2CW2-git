@@ -12,16 +12,18 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
 extended: false
 }))
+const path = require('path');
 app.use(express.urlencoded({ extended: false }));
+
+app.set('views', './views');
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
-const path = require('path');
+
 const public = path.join(__dirname,'public');
 app.use(express.static(public));
 const router = require('./routes/pantryRoutes');
 app.use('/', router); 
-const path = require('path')
-app.set('views', path.join(__dirname, 'views'));
+
 const port = process.env.PORT || 3000;
 app.listen(port, () =>
  console.log(
