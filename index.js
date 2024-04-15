@@ -15,11 +15,11 @@ extended: false
 const path = require('path');
 app.use(express.urlencoded({ extended: false }));
 
-const public = path.join(__dirname,'/public');
+const public = path.join(__dirname,'public');
 app.use("/css", express.static(__dirname + "/public/css"));
 app.use(express.static(public));
 
-const views = path.join(__dirname,'/views');
+const views = path.join(__dirname,'views');
 app.engine('mustache', mustache());
 app.set('views', views);
 app.set('view engine', 'mustache');
