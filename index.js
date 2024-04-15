@@ -16,10 +16,11 @@ const path = require('path');
 app.use(express.urlencoded({ extended: false }));
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
-app.set('views', path.join(process.cwd(), 'views'));
+app.set('views, __dirname + ./views');
+app.engine('mustache', mustache());
+app.set('view engine', 'mustache');
 
-
-const public = path.join(process.cwd(),'public');
+const public = path.join(__dirname,'/public');
 app.use(express.static(public));
 const router = require('./routes/pantryRoutes');
 app.use('/', router); 
