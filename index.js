@@ -14,12 +14,12 @@ extended: false
 }))
 const path = require('path');
 app.use(express.urlencoded({ extended: false }));
-const views = path.join(__dirname,'views');
+const views = path.join(__dirname,'/views');
 app.set('views', views)
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
-const public = path.join(__dirname,'public');
+const public = path.join(__dirname,'/public');
 app.use(express.static(public));
 const router = require('./routes/pantryRoutes');
 app.use('/', router); 
