@@ -1,11 +1,10 @@
 $body-bg: #f2f7f857;
-$body-color: rgba(5, 86, 48, 0.938);
+$body-color: black;
 $primary: #008080;
 $bs-primary:#008080;
 $bs-navbar-color:#008080;
 $navbar-light-color: white;
 
-$navbar-dark-color: white;
-
+$navbar-light-toggler-bg: white;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
