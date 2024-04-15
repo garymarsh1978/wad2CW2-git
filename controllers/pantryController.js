@@ -25,17 +25,17 @@ exports.handle_login = function (req, res){
       };
 exports.entries_list = function(req, res) {
     res.send('<h1>Not yet implemented: show a list of food entries.</h1>');
-}
+};
 
 exports.contact_page = function(req, res) {
     
         res.render('contactUsEntry', {
         'title': 'Contact Us',       
 })
-}
+};
 exports.landing_page = function(req, res) {
-  res.render('home', {
-    title: 'Welcome to Scottish Food Pantry Network',
+  res.render("homePage", {
+    title: "Welcome to Scottish Food Pantry Network",
 });
 };
 exports.entries_list = function(req, res) {
@@ -50,7 +50,7 @@ console.log('promise resolved');
 .catch((err) => {
 console.log('promise rejected', err);
 })
-}
+};
 exports.contacts_list = function(req, res) {
   contactdb.getAllContactEntries()
   .then((list) => {
@@ -64,7 +64,7 @@ console.log('promise resolved');
 .catch((err) => {
 console.log('promise rejected', err);
 })
-}
+};
 exports.pantry_entries_list = function(req, res) {
   const username = req.username
   db.getAllEntriesAvailable()
@@ -80,7 +80,7 @@ console.log('promise resolved');
 .catch((err) => {
 console.log('promise rejected', err);
 })
-}
+};
 exports.all_entries_list = function(req, res) {
   db.getAllAdminItems()
     .then((list) => {
@@ -94,7 +94,7 @@ console.log('promise resolved');
 .catch((err) => {
 console.log('promise rejected', err);
 })
-}
+};
 exports.show_food_type_entries = function(req, res) {
   const username = req.username
     console.log('filtering by Food Type', req.params.foodType);
@@ -110,7 +110,7 @@ exports.show_food_type_entries = function(req, res) {
 }).catch((err) => {
 console.log('error handling Food Types', err);
 });
-}
+};
 exports.show_deposited_food_type_entries = function(req, res) {
   const username = req.username
     console.log('filtering by Food Type', req.params.foodType);
@@ -126,13 +126,13 @@ exports.show_deposited_food_type_entries = function(req, res) {
 }).catch((err) => {
 console.log('error handling Food Types', err);
 });
-}   
+}; 
 exports.show_new_food_entries = function(req, res) {
     res.render('newFoodEntry', {
     title: 'Donate a food item',
     user : 'user',
     });
-    } 
+    };
 
 exports.post_new_food_entry = function(req, res) {
   const username = req.username
@@ -162,7 +162,7 @@ exports.show_added_food_entry = function(req,res) {
     title: 'Thank you for your Donation',
     user:"user",
   });
-}
+};
 
 exports.post_contact_entry = function(req, res) {
         console.log('processing post-new_entry controller');
@@ -188,7 +188,7 @@ exports.post_contact_entry = function(req, res) {
                 }
         contactdb.addContactEntry(req.body.firstName,  req.body.lastName, req.body.email, req.body.interest, req.body.message.trim());
         res.redirect('/');
-        }
+        };
 exports.show_register_page = function (req, res) {
         res.render("user/register");
         };
@@ -225,7 +225,7 @@ console.log('promise resolved');
 .catch((err) => {
 console.log('promise rejected', err);
 })
-}
+};
           
 exports.logout = function (req, res) {
     res.clearCookie("jwt").status(200).redirect("/");
@@ -234,7 +234,7 @@ exports.logout = function (req, res) {
 exports.carrots_entries = function(req, res) {
     res.send('<h1>Processing Carrot\'s Donations, see terminal</h1>');
     db.getCarrotsEntries()
-}
+};
 exports.show_admin = function (req, res) {
   const username = req.username
       userDAO.getAllUsers()
@@ -253,7 +253,7 @@ exports.show_admin = function (req, res) {
      };
     exports.admin_add_new_user=function(req, res){
       res.render('addUser',{ user:"admin"})
-    }
+    };
     exports.admin_post_new_user = function (req, res) {
       const user = req.body.username;
       const password = req.body.pass;
