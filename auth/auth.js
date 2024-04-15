@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const ACCESS_TOKEN_SECRET='Thghesmaookekomml123'
 
 exports.login = function (req, res, next) {
   let username = req.body.username;
@@ -21,7 +22,7 @@ exports.login = function (req, res, next) {
         //use the payload to store information about the user such as username.
         let payload = { username: username, role: user.role };
         //create the access token
-        let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        let accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET, {
           expiresIn: 300,
         });
         res.cookie("jwt", accessToken);
