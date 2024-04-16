@@ -43,7 +43,7 @@ exports.login = function (req, res, next) {
           });
         }
         if (payload.role == "normalUser") {
-          return res.render("homePage", {
+          return res.render("userHome", {
             title: "Welcome User",
             user: "user",
             username: username,

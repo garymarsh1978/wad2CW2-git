@@ -11,9 +11,10 @@
 {{#user}}
   <a id="logout" href="/logout" class="btn btn-primary mt-1 mr-1 mb-1">Sign out</a>
 {{/user}}
-    <h1>Welcome to the Scottish Pantry Network Site</h1>
-<p>Any food you can donate from you own growing would be greatly appreciated.</p>
-<p>You must register as a user and be logged in to donate food items</p>
+    <h1>Welcome {{username}}</h1>
+<div class="text-right">
+<a href="/newfood" class="btn btn-primary mt-1 mr-1 mb-1">Donate new Food Item</a>
+</div>
 </body>
 <footer>
 {{>footer}}
