@@ -5,23 +5,15 @@
 </head>
     {{^user}}
 <body class="container text-dark"> 
-  <a id="login" href="/register" class="btn btn-primary mt-1 mr-1 mb-1">
-    Register
-  </a>
-  <a id="login" href="/login" class="btn btn-primary mt-1 mr-1 mb-1">
-    Sign in
-  </a>
+  <a id="login" href="/register" class="btn btn-primary mt-1 mr-1 mb-1">Register</a>
+  <a id="login" href="/login" class="btn btn-primary mt-1 mr-1 mb-1">Sign in</a>
 {{/user}}
 {{#user}}
-  <a id="logout" href="/logout" class="btn btn-primary mt-1 mr-1 mb-1">
-    Sign out
-  </a>
+  <a id="logout" href="/logout" class="btn btn-primary mt-1 mr-1 mb-1">Sign out</a>
 {{/user}}
     <h1>Welcome {{username}}</h1>
 <div class="text-right">
-<a href="/newfood" class="btn btn-primary mt-1 mr-1 mb-1">
-Donate new Food Item
-</a>
+<a href="/newfood" class="btn btn-primary mt-1 mr-1 mb-1">Donate new Food Item</a>
 </div>
 </body>
 <footer>

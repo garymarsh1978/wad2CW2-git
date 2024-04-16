@@ -4,8 +4,8 @@
   "description": "WAD2 Coursework2",
   "main": "index.js",
   "engines": {
-    "node": "20.12.2",
-    "npm" : "10.5.0"
+    "node": "20.11.0",
+    "npm" : "10.2.4"
   }, 
   "scripts": {
     "sass-watch": "sass --no-source-map --watch styles/modifyBoots.scss public/css/style.css",
