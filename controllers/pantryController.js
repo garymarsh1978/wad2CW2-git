@@ -34,7 +34,7 @@ exports.contact_page = function(req, res) {
 })
 };
 exports.landing_page = function(req, res) {
-  res.render("home")
+  res.render("homePage")
 };
 exports.entries_list = function(req, res) {
     db.getAllEntriesAvailable()
