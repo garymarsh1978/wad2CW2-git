@@ -52,7 +52,7 @@ console.log('promise rejected', err);
 exports.contacts_list = function(req, res) {
   contactdb.getAllContactEntries()
   .then((list) => {
-      res.render('ContactEntries', {
+      res.render('contactEntries', {
       title: 'Display of Contact Messages',
       contactEntries: list,
       user: "user", 
