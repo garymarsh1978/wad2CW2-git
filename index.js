@@ -20,9 +20,9 @@ app.use("/css", express.static(__dirname + "/public/css"));
 app.use(express.static(public));
 
 const views = path.join(__dirname,'views');
-app.engine('Mustache', require.mustache().renderFile);
+app.engine('Mustache', mustache());
 console.log(views);
-console.log(__dirname);
+console.log(__dirname)
 app.set('views', views);
 app.set('view engine', 'mustache');
 
