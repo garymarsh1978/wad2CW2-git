@@ -34,9 +34,7 @@ exports.contact_page = function(req, res) {
 })
 };
 exports.landing_page = function(req, res) {
-  res.render("homePage", {
-    title: "Welcome to Scottish Food Pantry Network",
-});
+  res.render("home")
 };
 exports.entries_list = function(req, res) {
     db.getAllEntriesAvailable()
