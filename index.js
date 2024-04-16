@@ -24,7 +24,7 @@ app.engine('Mustache', mustache());
 console.log(views);
 console.log(__dirname)
 app.set('views', views);
-app.set('view engine', 'mustache');
+app.set('view engine', 'Mustache');
 
 
 const router = require('./routes/pantryRoutes');
