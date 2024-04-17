@@ -1,5 +1,16 @@
 # wad2CW2-git
 WAD2 Coursework 2 repository
+
+Users;
+ User - Password - Role
+
+Stuart -Stuart123 - NormalUser
+Administrator - Administrator - admin
+Renfrewshire - Renfrewshire -pantryUser
+Castlemilk - Castlemilk - pantryUser
+Easterhouse - Easterhouse - pantryUser
+Inverclyde - Inverclyde -pantryUser
+
 Features of Website
 A Normal user must register and login to be able to donate a food item.  When they have logged in then they can donate food by clicking on the Donate new Food Item Button.
 An admin user and pantry user can only be created by an admin user that is logged in and authenticated by using the admin user screen and pressing on the Add User Button.  An admin user can also delete any user using the Delete User Button.
