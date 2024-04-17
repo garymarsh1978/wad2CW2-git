@@ -97,7 +97,7 @@ test('Food Entries renders',async () => {
               ]
             }
               const res = { render: jest.fn() }
-               controller.entries_list(req, res)
+             await  controller.entries_list(req, res)
                  expect(res.render.mock.calls[0][0]).toBe( await 'foodEntries');
             })
         
