@@ -5,12 +5,19 @@
   "main": "index.js",
   "engines": {
     "node": "20.11.0",
-    "npm" : "10.2.4"
-  }, 
+    "npm": "10.2.4"
+  },
   "scripts": {
+    "test": "jest",
     "sass-watch": "sass --no-source-map --watch styles/modifyBoots.scss public/css/style.css",
     "nodemon-watch": "nodemon index.js -e *",
     "dev": "npm-run-all --parallel sass-watch nodemon-watch"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "repository": {
     "type": "git",
@@ -36,6 +43,7 @@
     "sass": "^1.75.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
     "npm-run-all": "^4.1.5"
   }
