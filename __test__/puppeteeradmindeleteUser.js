@@ -3,8 +3,8 @@ const puppeteer = require('puppeteer');
 async function main() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const username = 'Helen'
-    const password = 'Mar00n12'
+    const username = 'Administrator'
+    const password = 'Administrator2'
     try {
         // Login
         await page.goto('http://localhost:3000/login', { waitUntil: 'domcontentloaded', timeout: 60000});

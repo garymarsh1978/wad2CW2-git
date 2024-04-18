@@ -8,9 +8,9 @@ async function main() {
         // Login
         await page.goto('http://localhost:3000/login', {});
         await page.waitForSelector('#username');
-        await page.type('#username','Helen');
+        await page.type('#username','Administrator');
         await page.waitForSelector('#password');
-        await page.type('#password', 'Mar00n12');
+        await page.type('#password', 'Administrator');
         await Promise.all([
             page.click('#signin'),        ]);
         await page.goto('http://localhost:3000/messages', {});

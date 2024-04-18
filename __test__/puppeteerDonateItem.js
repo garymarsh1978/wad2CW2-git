@@ -8,9 +8,9 @@ async function main() {
         // Login
         await page.goto('http://localhost:3000/login', { waitUntil: 'networkidle0' });
         await page.waitForSelector('#username');
-        await page.type('#username', 'Gary');
+        await page.type('#username', 'Stuart');
         await page.waitForSelector('#password');
-        await page.type('#password', 'Mar00n12');
+        await page.type('#password', 'Stuart123');
         await Promise.all([
             page.click('#signin'),
             page.waitForNavigation({ waitUntil: 'networkidle0' }),
