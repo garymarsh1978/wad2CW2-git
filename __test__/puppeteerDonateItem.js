@@ -21,7 +21,7 @@ async function main() {
         await page.waitForSelector('#donator');
         await page.type('#donator', 'Gary Marsh');
         await page.waitForSelector('#foodType');
-        await page.type('#foodType', 'Apples');
+        await page.type('#foodType', 'Carrots');
         await page.waitForSelector('#quantity');
         await page.type('#quantity', '2kg');
         await page.waitForSelector('#harvestDate');
