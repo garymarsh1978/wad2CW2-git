@@ -17,6 +17,9 @@ An admin user and pantry user can only be created by an admin user that is logge
 A food item is only viewable and available to the pantry users when it is deposited which is processed by the admin user using the Process Deposit of Food Items.  An admin user can see items under the view food items that are not deposited as well to aid the processing of them.  The deposit date is set as today’s date ie the date it was processed.  This cannot be changed.    A pantry user can only see items that are deposited under the View Food Items.  After item is deposited it can be selected by a pantry user – a user with a pantryUser role.   The select date is set as todays date.  This cannot be changed.   It can be selected by any pantry until either a pantry selects the item or 28 days have elapsed after harvest date.  When either of these things happen it is no longer viewable and cannot be selected by any pantry.  One or many items can be selected by a pantry user at the same time by selecting the associated check box.  The pantry username is fixed and taken from the username as it was assumed that there would a generic user name for each pantry user.
 An admin user can also process collection of an item by selecting the Process Collection of Food Items.  Once again multiple items can be selected and processed at once be selecting the associated check box.  The collect date is set as today’s date and cannot be changed.  
 Anybody can view the About Us screen and Contact Us screens accessible from the Nav Bar.  Anybody can log a contact request message which is stored in the contacts.db.  
+
+There is also a remove out of date food feature which lists food that is over 28 days old from the harvest date.  Once again multiple items can be selected and removed.  This deletes them from the pantry.db database.
+
 Under the admin screen there is also a Contact Request Messages Button in which the contact requests can be viewed by the admin user.
  
 
