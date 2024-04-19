@@ -310,24 +310,25 @@ exports.show_admin = function (req, res) {
           res.send(401, "User exists:", user);
           return;
         }
-      })
         if (!result.isEmpty()) {
           res.render('addUser', {
             title:'Add User', 
+            user: user,  
             errors: errors,
           });
           }
            else {     
         userDAO.create(user, password,role);
         res.render("userAdded",{
-        title:'Added User', 
-  
-           }
-        );
+        title:'Add User', 
+         
+          
+           })
+        }
 
-     }
+     });
+    };
     
-      
 exports.show_pantry = function (req, res) {
   const username = req.username;
         db.getAllEntriesAvailable()
