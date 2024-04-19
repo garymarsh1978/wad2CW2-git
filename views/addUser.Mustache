@@ -74,6 +74,11 @@ Donate Food Item
     </div>
   </div>
 </div>
+{{#errors}}
+<div class="alert alert-danger" role="alert" id="error-group" >
+<ul id="errors"> {{msg}} </ul>
+</div>
+{{/errors}}
 </body>
 <footer>
 {{>footer}}

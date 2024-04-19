@@ -2,10 +2,10 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
 const {
-    newFoodInputValidator, contactInputValidator,
+    newFoodInputValidator, contactInputValidator, registerUserValidation,
   } = require('../validators/validator');
+  const auth =require('../auth/auth.js');
 const controller = require('../controllers/pantryController.js');
-const auth =require('../auth/auth.js');
 router.get('/login', controller.show_login);
 router.post('/login', auth.login, controller.handle_login);
 router.get('/', controller.landing_page);
@@ -13,7 +13,7 @@ router.get('/addedFoodEntry', auth.verify, controller.show_added_food_entry);
 router.get('/newfood',auth.verify, controller.show_new_food_entries);
 router.post('/newfood', auth.verify, newFoodInputValidator, controller.post_new_food_entry);
 router.get('/register', controller.show_register_page);
-router.post('/register', controller.post_new_user);
+router.post('/register', registerUserValidation, controller.post_new_user);
 router.get('/loggedIn',auth.verify, controller.loggedIn_landing);
 router.get('/pantry', auth.verifyPantry,controller.pantry_entries_list);
 router.get('/pantry/:foodType', auth.verifyPantry,controller.show_deposited_food_type_entries);
@@ -40,7 +40,7 @@ router.get('/about', function(req, res) {
 })
 router.get('/admin',auth.verifyAdmin,controller.show_admin);
 router.get('/adminPostNewUser',auth.verifyAdmin, controller.admin_add_new_user);
-router.post('/adminPostNewUser',auth.verifyAdmin, controller.admin_post_new_user);
+router.post('/adminPostNewUser',auth.verifyAdmin, registerUserValidation, controller.admin_post_new_user);
 router.get('/logout', controller.logout);
 router.use(function(req, res) {
     res.status(404);

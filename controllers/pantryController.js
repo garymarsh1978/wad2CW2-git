@@ -292,7 +292,7 @@ exports.show_admin = function (req, res) {
        });
      };
     exports.admin_add_new_user=function(req, res){
-      res.render('addUser',{ user:"admin"})
+      res.render('addUser',{ user:"user"})
     };
     exports.admin_post_new_user = function (req, res) {
       const user = req.body.username;
@@ -310,22 +310,24 @@ exports.show_admin = function (req, res) {
           res.send(401, "User exists:", user);
           return;
         }
+      })
         if (!result.isEmpty()) {
           res.render('addUser', {
             title:'Add User', 
-            user: admin,  
             errors: errors,
           });
           }
            else {     
         userDAO.create(user, password,role);
-        res.render("userAdded")
-
+        res.render("userAdded",{
+        title:'Added User', 
+  
            }
-        });
+        );
 
-     };
+     }
     
+      
 exports.show_pantry = function (req, res) {
   const username = req.username;
         db.getAllEntriesAvailable()
