@@ -375,7 +375,8 @@ exports.select_food = function (req, res){
               }
       
         db.UpdateSelectedFoodItems(selectedItems,pantry);
-        res.render("foodItemAdded",{
+        res.render("foodItemAdded",{  
+        user:'user',
         username: username});
        };
 exports.collect_food = function (req, res){
