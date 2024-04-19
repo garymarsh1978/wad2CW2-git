@@ -21,5 +21,6 @@ Anybody can view the About Us screen and Contact Us screens accessible from the 
 There is also a remove out of date food feature which lists food that is over 28 days old from the harvest date.  Once again multiple items can be selected and removed.  This deletes them from the pantry.db database.
 
 Under the admin screen there is also a Contact Request Messages Button in which the contact requests can be viewed by the admin user.
+Serverside form validation has been added for the contact us form, donate a food item form and the user registration form.
  
 
