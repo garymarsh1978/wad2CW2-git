@@ -1,5 +1,5 @@
 const { check} = require('express-validator');
-
+// validator for newFood Form
 exports.newFoodInputValidator = [
 check("donator", "Donator must be at least 3 characters")
     .not()
@@ -12,6 +12,7 @@ check("donator", "Donator must be at least 3 characters")
 check("donator").exists().isLength({min: 8}).trim().escape().withMessage('Donator must have more than 8 characters'),
 check("quantity").exists().isLength({min: 3}).trim().escape().withMessage('Quantity" must have more than 3 characters'),
 ];
+// validator for ContactUs Form
 exports.contactInputValidator = [
     check("firstName", "Your first name  must be at least 3 characters")
     .not()
@@ -41,6 +42,7 @@ exports.contactInputValidator = [
  check('firstName').exists().isLength({min: 3}).trim().escape().withMessage('First Name must have more than 3 characters'),
  check('lastName').exists().isLength({min: 3}).trim().escape().withMessage('Last Name must have more than 3 characters'),
 ];
+// validator for register sForm
 exports.registerUserValidation = [
     check("username", "username must be at least 3 characters")
         .not()

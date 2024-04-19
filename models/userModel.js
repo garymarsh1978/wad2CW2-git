@@ -30,6 +30,8 @@ class UserDAO {
     // });
     return this;
   }
+
+  // create new user
   create(username, password, role) {
     const that = this;
     bcrypt.hash(password, saltRounds).then(function (hash) {
@@ -57,7 +59,7 @@ class UserDAO {
       }
     });
   }
-
+// get all users
   getAllUsers() {
     return new Promise((resolve, reject) => {
     this.db.find({}, function (err, users) {
@@ -71,6 +73,7 @@ class UserDAO {
     });
     });
   }
+// delete users
 deleteUsers(selectedUsers) {
     console.log(selectedUsers);
     if (selectedUsers.constructor === Array){

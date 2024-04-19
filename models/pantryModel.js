@@ -70,24 +70,9 @@ class Pantry{
         //console.log('db entry Ann inserted'); 
         } 
     //a function to return all entries from the database
-    getAllEntries() {
-        //return a Promise object, which can be resolved or rejected
-        return new Promise((resolve, reject) => {
-            //use the find() function of the database to get the data,
-            //error first callback function, err for error, entries for data
-            this.db.find({}, function(err, foodEntries) {
-                //if error occurs reject Promise
-                if (err) {
-                    reject(err);
-                //if no error resolve the promise & return the data
-                } else {
-                    resolve(foodEntries);
-                    //to see what the returned data looks like
-                    console.log('function all() returns: ', foodEntries);
-                }
-            })
-        })
-    }
+    // return all entries
+  
+    // add new food item
     addFoodEntry(donator, foodType, quantity, harvestDate) {
         var foodEntry = {
         donator: donator,
@@ -108,6 +93,8 @@ console.log('document inserted into the database', doc);
 }
 }) 
 }
+
+
 getAllEntries() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -126,6 +113,9 @@ getAllEntries() {
         })
     })
 }
+
+
+// return all available food items, - deposited, not selected by pantry and with 28 days of harvest date
 getAllEntriesAvailable() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -150,6 +140,8 @@ getAllEntriesAvailable() {
         })
     })
 }
+
+// return all out of date food thsat id deposited and not selected by pantry 28 days after harvest date
 getAllOutOFDateFood() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -174,6 +166,7 @@ getAllOutOFDateFood() {
         })
     })
 }
+// return all items not deposited within 28 days of harvest date
 getAllItemsNotDeposited() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -198,6 +191,7 @@ getAllItemsNotDeposited() {
         })
     })
 }
+// reurn all items not selected by pantry within 28 days of harvest date but could not be deposited for admin user
 getAllAdminItems() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
@@ -222,6 +216,7 @@ getAllAdminItems() {
         })
     })
 }
+// add deposit date for selected items
 UpdateDepositedFoodItems(selectedItems) {
     console.log(selectedItems);
     console.log(pantry);
@@ -264,6 +259,7 @@ UpdateDepositedFoodItems(selectedItems) {
     } 
     this.db.persistence.compactDatafile();
     }
+// get entries by food type that are available including those not deposited for admin user screen
 getEntriesByFoodType(food) {
     var  date = new Date();
     var day = date.getDate() - 28;
@@ -282,6 +278,7 @@ getEntriesByFoodType(food) {
     })
     })
     }
+    // get entries by food type that are available  for pantry user screen
     getDepositedEntriesByFoodType(food) {
         var  date = new Date();
         var day = date.getDate() - 28;
@@ -300,6 +297,8 @@ getEntriesByFoodType(food) {
         })
         })
         }
+
+        // get Carrot entries
     getCarrotsEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
@@ -318,6 +317,7 @@ getEntriesByFoodType(food) {
             })
         })
     }
+    // update items with pantry username and today's date for select date 
 UpdateSelectedFoodItems(selectedItems, pantry) {
     console.log(selectedItems);
     console.log(pantry);
@@ -360,6 +360,7 @@ UpdateSelectedFoodItems(selectedItems, pantry) {
     } 
     this.db.persistence.compactDatafile();
     }
+// get all selected items for collection    
 getAllSelectedItems() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
@@ -384,7 +385,7 @@ getAllSelectedItems() {
             })
         })
     }
-
+// add collect date as today for processing collection
 UpdateCollectedFoodItems(selectedItems) {
         console.log(selectedItems);
         const todayDate = new Date().toISOString().split('T')[0];
@@ -426,7 +427,7 @@ UpdateCollectedFoodItems(selectedItems) {
         } 
         this.db.persistence.compactDatafile();
         }
-
+// add deposit date for selected items
 UpdateDepositedFoodItems(selectedItems) {
             console.log(selectedItems);
             const todayDate = new Date().toISOString().split('T')[0];
@@ -468,6 +469,7 @@ UpdateDepositedFoodItems(selectedItems) {
             } 
             this.db.persistence.compactDatafile();
             }
+// remove out of date food      
 DeleteOutOfDateFoodItems(selectedItems) {
                 console.log(selectedItems);
                 if (selectedItems.constructor === Array){

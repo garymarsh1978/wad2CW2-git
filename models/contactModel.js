@@ -25,6 +25,8 @@ class Contact{
       // });
       return this;
     }
+
+    // return all contact requests
     getAllContactEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
@@ -43,6 +45,7 @@ class Contact{
             })
         })
     }
+    // ad ne contact message entry
     addContactEntry(firstName, lastName, email, interest, message) {
         var contactEntry = {
         firstName: firstName,
