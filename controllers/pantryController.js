@@ -1,6 +1,8 @@
+
 const pantryDAO = require('../models/pantryModel.js');
 const contactDAO = require('../models/contactModel.js');
 const userDAO = require("../models/userModel.js");
+const { validationResult } = require('express-validator');
 
 
 const db = new pantryDAO({ filename: 'pantry.db', autoload: true }); 
@@ -30,7 +32,7 @@ exports.entries_list = function(req, res) {
 exports.contact_page = function(req, res) {
     
         res.render('contactUsEntry', {
-        'title': 'Contact Us',       
+        'title': 'Contact Us',      
 })
 };
 exports.landing_page = function(req, res) {
@@ -133,27 +135,41 @@ exports.show_new_food_entries = function(req, res) {
     };
 
 exports.post_new_food_entry = function(req, res) {
+  const result = validationResult(req);
+  const errors = result.array();
+  
   const username = req.username
+  console.log(req.body);
     console.log('processing post-new_entry controller');
     if (!req.body.donator) {
-    response.status(400).send("Entries must have an Donator.");
+    res.status(400).send("Entries must have an Donator.");
     return;
     }
     if (!req.body.foodType) {
-        response.status(400).send("Entries must have a Food Type.");
+        res.status(400).send("Entries must have a Food Type.");
         return;
         }
     if (!req.body.harvestDate) {
-        response.status(400).send("Entries must have a Harvest Date.");
+        res.status(400).send("Entries must have a Harvest Date.");
         return;
             }
-    db.addFoodEntry(req.body.donator,  req.body.foodType, req.body.quantity, req.body.harvestDate);
-    res.render("addedFoodEntry",
-    {
-      title: 'Thanks for your donation ',
-      user: "user",
-      username:username,
-    });
+            if (!result.isEmpty()) {
+              res.render('newFoodEntry', {
+                title: 'Donate a food item',
+                user : 'user',
+                errors: errors,
+              });
+              }
+               else {
+                db.addFoodEntry(req.body.donator,  req.body.foodType, req.body.quantity, req.body.harvestDate);
+                res.render("addedFoodEntry",
+                {
+                  title: 'Thanks for your donation ',
+                  user: "user",
+                  username:username,
+                })
+            }
+   
   };
 exports.show_added_food_entry = function(req,res) {
   res.render("addedFoodEntry", {
@@ -164,6 +180,8 @@ exports.show_added_food_entry = function(req,res) {
 
 exports.post_contact_entry = function(req, res) {
         console.log('processing post-new_entry controller');
+        const result = validationResult(req);
+        const  errors = result.array();
         if (!req.body.firstName) {
         response.status(400).send("Entries must have an First Name.");
         return;
@@ -180,17 +198,33 @@ exports.post_contact_entry = function(req, res) {
             response.status(400).send("Entries must have an email address.");
             return;
             }
-            if (!req.body.message) {
+            if (!req.body.reqmessage) {
                 response.status(400).send("Entries must have a message.");
                 return;
                 }
-        contactdb.addContactEntry(req.body.firstName,  req.body.lastName, req.body.email, req.body.interest, req.body.message.trim());
-        res.redirect('/');
+                if (!result.isEmpty()) {
+                  res.render('contactUsEntry', {
+                    'title': 'Contact Us',       
+                    errors: errors,
+                  });
+                  }
+                   else {
+        contactdb.addContactEntry(req.body.firstName,  req.body.lastName, req.body.email, req.body.interest, req.body.reqmessage.trim());
+        res.render('contactMessageAdded', {
+          title: 'Thank you for your message, ',   
+          username : req.body.firstName,
+        });
         };
+      };
 exports.show_register_page = function (req, res) {
-        res.render("user/register");
+  res.render('user/register', {
+    title: 'Register User',
+
+    });
         };
 exports.post_new_user = function (req, res) {
+        const result = validationResult(req);
+        const  errors = result.array();
         const user = req.body.username;
         const password = req.body.pass;
         const role = req.body.role;
@@ -204,8 +238,16 @@ exports.post_new_user = function (req, res) {
             res.send(401, "User exists:", user);
             return;
             }
+            if (!result.isEmpty()) {
+              res.render('user/register', {
+                title:'Register User',   
+                errors: errors,
+              });
+              }
+               else {     
             userDAO.create(user, password,role);
             res.redirect("/login");
+               }
             });
           };
           
@@ -256,6 +298,8 @@ exports.show_admin = function (req, res) {
       const user = req.body.username;
       const password = req.body.pass;
       const role = req.body.role;
+      const result = validationResult(req);
+      const  errors = result.array();
     
       if (!user || !password) {
         res.send(401, "no user or no password");
@@ -266,9 +310,20 @@ exports.show_admin = function (req, res) {
           res.send(401, "User exists:", user);
           return;
         }
+        if (!result.isEmpty()) {
+          res.render('addUser', {
+            title:'Add User', 
+            user: admin,  
+            errors: errors,
+          });
+          }
+           else {     
         userDAO.create(user, password,role);
-      });
-      res.render("userAdded")
+        res.render("userAdded")
+
+           }
+        });
+
      };
     
 exports.show_pantry = function (req, res) {

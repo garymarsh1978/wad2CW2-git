@@ -1,13 +1,17 @@
 const express = require('express');
+const { check, validationResult } = require('express-validator');
 const router = express.Router();
+const {
+    newFoodInputValidator, contactInputValidator,
+  } = require('../validators/validator');
 const controller = require('../controllers/pantryController.js');
-const auth =require('../auth/auth.js')
+const auth =require('../auth/auth.js');
 router.get('/login', controller.show_login);
 router.post('/login', auth.login, controller.handle_login);
 router.get('/', controller.landing_page);
 router.get('/addedFoodEntry', auth.verify, controller.show_added_food_entry);
-router.get('/newfood',auth.verify,controller.show_new_food_entries);
-router.post('/newfood', auth.verify, controller.post_new_food_entry);
+router.get('/newfood',auth.verify, controller.show_new_food_entries);
+router.post('/newfood', auth.verify, newFoodInputValidator, controller.post_new_food_entry);
 router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);
 router.get('/loggedIn',auth.verify, controller.loggedIn_landing);
@@ -27,7 +31,8 @@ router.get('/deleteUser',auth.verifyAdmin,controller.show_delete_users);
 router.post('/deleteUser',auth.verifyAdmin,controller.post_deleted_user);
 router.get('/Carrots', controller.carrots_entries);
 router.get('/contact', controller.contact_page);
-router.post('/contact', controller.post_contact_entry);
+router.post('/contact',contactInputValidator, controller.post_contact_entry);
+    
 router.get('/messages', auth.verifyAdmin, controller.contacts_list)
 router.get('/adminfood/:foodType',auth.verifyAdmin,controller.show_food_type_entries);
 router.get('/about', function(req, res) {
@@ -42,6 +47,9 @@ router.use(function(req, res) {
     res.type('text/plain');
     res.send('404 Not found.');
 })
+
+
+
 // router.use(function(err, req, res, next) {
 //     res.status(500);
 //     res.type('text/plain');

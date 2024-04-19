@@ -60,3 +60,4 @@
 {"donator":"Harry Potter","foodType":"Apples","quantity":"4kg","harvestDate":"2024-04-09","depositDate":"2024-04-11","pantry":"Renfrewshire","selectDate":"2024-04-11","collectDate":"2024-04-16","_id":"xai0wGVko1IlTUPi"}
 {"donator":"James McKay","foodType":"Carrots","quantity":"2.5kg","harvestDate":"2024-04-02","depositDate":"2024-04-10","pantry":"Easterhouse","selectDate":"2024-04-11","collectDate":"2024-04-11","_id":"ypQVfkgmX5hhUclk"}
 {"donator":"Helen Sharp","foodType":"Carrots","quantity":"2.5kg","harvestDate":"2024-03-18","depositDate":"2024-04-14","pantry":null,"selectDate":null,"collectDate":null,"_id":"z8lDsF1EQNrwbN6m"}
+{"donator":"Helen Sharp","foodType":"Apples","quantity":"3.5","harvestDate":"2024-04-15","depositDate":null,"pantry":null,"selectDate":null,"collectDate":null,"_id":"JYkXHRUqXGmwX5Ps"}

@@ -1,6 +1,8 @@
 
 const express = require('express');
 const app = express();
+
+
 require('dotenv').config() // loads data from .env file
 
 const cookieParser = require('cookie-parser')
@@ -14,7 +16,6 @@ extended: false
 }))
 const path = require('path');
 app.use(express.urlencoded({ extended: false }));
-
 const public = path.join(__dirname,'public');
 app.use("/css", express.static(__dirname + "/public/css"));
 app.use(express.static(public));

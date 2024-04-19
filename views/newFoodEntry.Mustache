@@ -55,5 +55,14 @@
             <input type="submit" id="add" value="Add Food Item" class="btn btn-primary mt-1 mr-1 mb-1">
         </div>
     </form>
+{{#errors}}
+<div class="alert alert-danger" role="alert" id="error-group" >
+<ul id="errors"> {{msg}} </ul>
+</div>
+{{/errors}}
+</body>
+<footer>
+{{>footer}}
+</footer>
 </body>
 </html>
